@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import {homeIcon,searchIcon, notificationIcon, addIcon, bookmarkedIcon, settingsIcon} from "../assets/images/icons/index"
+import { NavItemsCompo } from './index';
+import {searchIcon} from "../assets/images/icons/index"
 
 export default function NavbarCompo() {
   return (
@@ -14,35 +14,8 @@ export default function NavbarCompo() {
         </div>
            <input type="text" className="nav_input_search" placeholder='search' />
        </div>
+      <NavItemsCompo />
 
-       <div className="navbar_items">
-            <div className="nav_item">
-              <Link to="/">
-                <img src={homeIcon} alt="Home" />
-              </Link>
-            </div>
-            <div className="nav_item">
-              <Link to="/">
-                <img src={notificationIcon} alt="Home" />
-              </Link>
-            </div>
-            <div className="nav_item">
-              <Link to="/">
-                <img src={addIcon} alt="Home" />
-              </Link>
-            </div>
-            <div className="nav_item">
-              <Link to="/">
-                <img src={bookmarkedIcon} alt="Home" />
-              </Link>
-            </div>
-            <div className="nav_item">
-              <Link to="/">
-                <img src={settingsIcon} alt="Home" />
-              </Link>
-            </div>
-       </div>
-       
     </Nav>
   )
 }
