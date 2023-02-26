@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavItemsCompo } from './index';
-import {searchIcon} from "../assets/images/icons/index"
+import { NavItemsCompo , LogoCompo, ButtonCompo } from './index';
+import {searchIcon} from "../assets/icons/index"
 
 export default function NavbarCompo() {
   return (
     <Nav>
-       <div className="logo">Backdoor</div>
-
+      <LogoCompo />
+      
        <div className="nav_search_box">
         <div className="search_icon">
           <img src={searchIcon} alt="" />
@@ -15,11 +15,12 @@ export default function NavbarCompo() {
            <input type="text" className="nav_input_search" placeholder='search' />
        </div>
       <NavItemsCompo />
+      <ButtonCompo type="click" text='register' link='/register'/>
+
 
     </Nav>
   )
 }
-
 
 const Nav = styled.nav`
    display:flex ;
@@ -29,20 +30,23 @@ const Nav = styled.nav`
    background-color: var( --primary-bg-color) ;
    border-bottom: 1px solid var(--border-color);
   
-   .logo{
+   /* .logo{
      color: var(--heading-color) ;
      font-size:2rem ;
      font-weight:800 ;
-   }
+   } */
    .nav_search_box{
     display: flex ;
     align-items: center ;
-    width: 270px ;
+    width:40%  ;
     border: 1px solid var(--border-color) ;
-    padding: 5px;
+    padding: 6px 10px;
+    border-radius:20px ;
 
     .search_icon{
       width: 10% ;
+      border-right: 1px solid var(--border-color) ;
+      cursor: pointer;
       img{
         width: 18px ;
       }

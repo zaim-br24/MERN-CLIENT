@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import {homeIcon, notificationIcon, addIcon, bookmarkedIcon, settingsIcon} from "../assets/images/icons/index"
-import { NavItemCompo } from './index'
+import {homeIcon, notificationIcon, addIcon, bookmarkedIcon, settingsIcon} from "../assets/icons/index"
+import { NavItemCompo} from './index'
 
 export default function NavItemsCompo() {
   return (
@@ -10,7 +10,7 @@ export default function NavItemsCompo() {
     <NavItemCompo icon={notificationIcon} link="/"/>
     <NavItemCompo icon={addIcon} link="/"/>
     <NavItemCompo icon={bookmarkedIcon} link="/"/>
-    <NavItemCompo icon={settingsIcon} link="/"/>
+    <NavItemCompo icon={settingsIcon} link="/settings"/>
   </Items>
   )
 }
