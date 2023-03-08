@@ -1,4 +1,3 @@
-import React from 'react'
 import {CLEAR_ALERT, DISPLAY_ALERT} from './actions'
 
 export default function reducer(state , action) {
