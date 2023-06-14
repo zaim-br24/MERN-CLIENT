@@ -14,4 +14,5 @@ const Wrapper = styled.div`
     border: 1px solid var(--border-color) ;
     padding: 5px ;
     border-radius:10px ;
+    background-color: white;
 `;

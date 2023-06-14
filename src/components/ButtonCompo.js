@@ -4,23 +4,30 @@ import { Link } from 'react-router-dom';
 
 export default function ButtonCompo({type ,text, link}) {
   return (
-    <Button>
+    <Wrapper>
         <Link to={link}>
           <button className='btn-style' type={type}>{text}</button>
         </Link>
-    </Button>
+    </Wrapper>
   )
 }
 
 
-const Button = styled.div`
-    border-radius: 10px;
+const Wrapper = styled.div`
+    background-color: aliceblue;
+    padding: 2px;
+    border-radius: 20px;
+    background-image: linear-gradient(to right, #e73c7e,#23d5ab);
+  
 
     button{
+      border-radius: 20px;
+      font-weight: 500;
         :focus,
         :hover {
-        background-color: var(--btn-bg-color);
-        transform: scale(1.09);
+        background-color:white;
+        color: black;
+    
         }
     }
 `;

@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 
-export default function NavItemCompo({icon, link}) {
+export default function NavItemCompo({icon, link, altText, title}) {
   return (
-    <Item className="nav_item">
-      <Link to={link}>
-        <img src={icon} alt="Home" />
+    <Item className="nav_item element" title={title} >
+      <Link to={link} >
+        <img src={icon}  alt={altText} />
       </Link>
     </Item>
   )
@@ -15,6 +15,9 @@ export default function NavItemCompo({icon, link}) {
 
 
 const Item = styled.div`
-      width:33px ;
-      margin-left: 15px ;
+    width:33px ;
+    margin-left: 15px ;
+    position: relative;
+
+
 `;

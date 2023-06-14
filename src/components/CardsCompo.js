@@ -17,5 +17,5 @@ export default function CardsCompo() {
 }
 
 const Cards = styled.div`
-
+ 
 `;

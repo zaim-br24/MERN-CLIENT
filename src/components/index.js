@@ -10,6 +10,8 @@ import LogoCompo from "./LogoCompo";
 import ButtonCompo from "./ButtonCompo";
 import Input from "./Input";
 import Alert from "./Alert";
+import SideBar from "./SideBar";
+
 
 
 export {
@@ -25,5 +27,6 @@ export {
     ButtonCompo,
     Input,
     Alert,
+    SideBar,
     
 }

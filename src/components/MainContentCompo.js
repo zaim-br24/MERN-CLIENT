@@ -16,8 +16,11 @@ const Main = styled.div`
     display: flex;
     /* align-items:center ; */
     justify-content: space-between ;
-    max-width:90% ;
-    margin: 20px auto ;
-
-  
-`;
+    max-width:70% ;
+    margin-left: 16rem;
+    margin-top: 6rem;
+    @media screen and (max-width: 1200px){
+      max-width:90% ;
+    }
+ 
+  `
