@@ -2,14 +2,13 @@ import styled from 'styled-components'
 
 
  const Wrapper = styled.div`
-     height: 100vh;
-     /* min-height: 100vh; */
+     min-height: 100vh;
      width: 100%;
      background-size: cover;
      background-repeat:no-repeat ;
      background-position:center ;
      /* background-image: url( ${(props) => props.landingPageBg}) ;*/
-     /* background-color: #111827 ; */
+     background-color: #111827 ;
   
      .landing_nav{
       display:flex ;

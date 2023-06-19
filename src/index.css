@@ -13,9 +13,9 @@ font-family: 'Roboto', sans-serif;
   font-family: 'Inter', sans-serif;
 }
 body{
-  /* background-color: whitesmoke; */
   max-width: 100vw;
-  background-color: #111827 ;
+  /* background-color: #000000 ; */
+  background-color: whitesmoke;
 
 }
 
@@ -26,7 +26,7 @@ body{
   --heading-color: #1d1d1d;
   --font-family:'Inter', sans-serif;
   --border-color: #3a3a3a28;
-  --box-shadow: 0px 4px 13px -5px rgba(0,0,0,0.62);
+  --box-shadow: 0px 4px 5px -5px rgba(0,0,0,0.5);
   --box-shadow-white: 0px 4px 13px -5px rgb(255, 255, 255);
   --btn-bg-color:#000000;
 }
@@ -51,6 +51,18 @@ a{
   text-decoration: none;
   color: var(--heading-color);
 }
+.glass-background {
+  background-color: rgba(255, 255, 255, 0.5); 
+  backdrop-filter: blur(10px); 
+  box-shadow: var(--box-shadow);
+}
+.box {
+  color: #000000;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 150%;
+  /* box-shadow: var(--box-shadow); */
+}
 
 .btn-style{
   background-color: var(--btn-bg-color); /* Green */
@@ -74,6 +86,25 @@ a{
   cursor: pointer;
 }
 
+/* :::::::::::::::::::: profile-btns  */
+.profile-btns{
+  padding: .6rem;
+  
+  font-weight: 500;
+  border-radius: .5rem;
+  background: none;
+  outline: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  transition: all .2s ease-in;
+}
+.profile-btns:hover{
+  opacity: .7;
+}
+.profile-btns:active{
+  transform: scale(.9);
+}
 /*-----------------ALERT------------------*/
 .alert-danger{
   background-color: #ff7979;
@@ -85,7 +116,7 @@ a{
   color: #0b5e0fe3;
 }
 
-.element:hover::before {
+/* .element:hover::before {
   content: attr(title);
   display: block;
   position: absolute;
@@ -98,5 +129,5 @@ a{
   font-size: 12px;
   border-radius: 5px;
   z-index: 1;
-}
+} */
 

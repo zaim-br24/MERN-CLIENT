@@ -4,12 +4,11 @@ const Wrapper = styled.div`
     display: flex ;
     border: 1px solid var(--border-color) ;
     margin-bottom: 5px;
-    background-color: white;
+    /* background-color: white; */
     transition: all .3s ease-out;
-    height: 150PX;
+    min-height: 120px;
     :hover{
-        /* border: 1px solid black; */
-        box-shadow: 0px 4px 13px -5px rgba(0,0,0,0.62);
+        border: 1px solid gray;
     }
     
     :first-child{
@@ -23,25 +22,26 @@ const Wrapper = styled.div`
     :first-child .post_img { border-top-left-radius: 10px ;}
     :last-child .post_img{ border-bottom-left-radius: 10px ;} 
     .post_img{
-        background-color: gray ;
+        background-color: #000000 ;
         width: 40% ;
         min-width: 200px ;
-        height: 100%;
+        /* height: 100; */
     }
     .content{
         margin-left: 10px ;
         padding:10px ;
         .post_details{
             font-size: 18px; 
+            font-weight: 600;
             @media screen and (max-width: 1200px){
-                font-size: 12px;
+                font-size: .8rem;
             }
         }        
         .post_content_text{
         margin-top: 10px;
         color: var(--font-color);
         @media screen and (max-width: 1200px){
-                font-size: 14px; 
+                font-size: .9rem; 
          }
     }
         

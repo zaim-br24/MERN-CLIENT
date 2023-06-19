@@ -1,12 +1,16 @@
 import React from "react"
 import { Outlet } from "react-router-dom"
 import styled from "styled-components"
-import { NavItemCompo } from "../../components"
+import { NavbarCompo, SidebarCompo, SideBar } from "../../components"
 
 export default function SharedLayout() {
   return (
     <Wrapper>
-       {/* <NavItemCompo/> */}
+       <NavbarCompo/>
+       <SideBar/>
+
+       {/* <SidebarCompo /> */}
+
       < Outlet/>
     </Wrapper>
   )

@@ -8,7 +8,7 @@ import { NavItemCompo} from './index'
 export default function NavItemsCompo() {
 
   return (
-  <Items className="navbar_items">
+  <Items>
     <NavItemCompo icon={homeIcon} title='Home' altText="Home icon" link="/"/>
     <NavItemCompo icon={notificationIcon} title='Notification' altText="notificationIcon" link="/"/>
     <NavItemCompo icon={addIcon} title='Add a Post' altText="addIcon" link="/create-post"/>
@@ -23,4 +23,8 @@ const Items = styled.div`
       display: flex;
       justify-content: center ;
       align-items: center ;
+
+      @media screen and (max-width : 600px){
+        display: none;
+     }
 `;

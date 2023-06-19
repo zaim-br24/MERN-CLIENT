@@ -6,11 +6,26 @@ import {
   REGISTER_USER_ERROR,
   LOGIN_USER_BEGIN,
   LOGIN_USER_SUCCESS, 
-  LOGIN_USER_ERROR
+  LOGIN_USER_ERROR,
+  CLOSE_MENU,
+  OPEN_MENU,
+
 } from './actions'
 
 export default function reducer(state , action) {
+  if(action.type === CLOSE_MENU){
+    return{
+      ...state,
+      isDropdownOpen: false
 
+    }
+  }
+  if(action.type === OPEN_MENU){
+    return{
+      ...state,
+      isDropdownOpen: true
+    }
+  }
    if(action.type === DISPLAY_ALERT){
       return {...state,
         showAlert:true,

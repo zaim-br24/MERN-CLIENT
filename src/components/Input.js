@@ -7,8 +7,8 @@ export default function Input({type, name, value, label, handelChange, children}
     <label for="password">{label}</label>
     <input type={type}  value={value} name={name}  onChange={handelChange}/>
     {
-      children && <div class="forgot">
-      <a rel="noopener noreferrer" href="#">Forgot Password ?</a>
+      children && <div className="forgot">
+      <a rel="noopener noreferrer" href="/fogetPassword">Forgot Password ?</a>
     </div>
     }
   </Wrapper>

@@ -29,7 +29,7 @@ export default function SideBar() {
 const Wrapper = styled.div`
     position: fixed;
     left: 0;
-    top:64px;
+    top:54px;
     bottom: 0;
     width: 220px;
     background-color:white ;
@@ -107,5 +107,7 @@ const Wrapper = styled.div`
         color: black;
       }
     }
-
+    @media screen and (max-width : 900px){
+      display: none;
+     }
 `

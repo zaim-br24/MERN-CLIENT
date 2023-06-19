@@ -5,7 +5,7 @@ import { Input, ButtonCompo} from "../../components/index"
 export default function AddPost() {
   return (
     <Wrapper>
-    <div className="container">
+    <div className="glass-background container">
       <header>
         <h2>Create Post</h2>
       </header>
@@ -30,18 +30,26 @@ export default function AddPost() {
 
 
 const Wrapper = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  display: flex;
-  align-items: center;
+  display: flex; 
+   align-items: center; 
   justify-content:center ;
+  
 .container{
   width:70%;
-  max-width: 90%;
+
+  max-width: 60%;
   border: 1px solid black;
   border-radius: 5px;
-  background-color: whitesmoke;
+  /* background-color: whitesmoke */
 
+  @media screen and (max-width : 1000px){
+    width: 100%;     
+    max-width: 100%;
+    margin:0 1rem;
+
+  }
   header{
     padding: 15px 10px;
     background-color: black;

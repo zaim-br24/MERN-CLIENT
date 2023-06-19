@@ -5,7 +5,6 @@ import {AddPost, Profile, SharedLayout} from './pages/dashboard/index'
 import { useAppContext } from './context/appContext.js'
 
 function App() {
-
   const {userRegistered} = useAppContext()
   return (
     <>

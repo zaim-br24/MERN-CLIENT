@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import { Link } from 'react-router-dom';
 
 export default function LogoCompo() {
   return (
     <Logo>
         {/* Aicha Hassi */}
-        <p>Backdoor</p>
+        <Link to='/'><p>Backdoor</p></Link>
+        
         
     </Logo>
   )

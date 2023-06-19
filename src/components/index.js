@@ -11,6 +11,10 @@ import ButtonCompo from "./ButtonCompo";
 import Input from "./Input";
 import Alert from "./Alert";
 import SideBar from "./SideBar";
+import DropdownMenu from './DropdownMenu';
+import Card from "./Card";
+import Cards from "./Cards";
+
 
 
 
@@ -28,5 +32,8 @@ export {
     Input,
     Alert,
     SideBar,
+    DropdownMenu,
+    Card,
+    Cards,
     
 }

@@ -19,5 +19,4 @@ const Item = styled.div`
     margin-left: 15px ;
     position: relative;
 
-
 `;

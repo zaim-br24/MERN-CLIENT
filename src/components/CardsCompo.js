@@ -17,5 +17,7 @@ export default function CardsCompo() {
 }
 
 const Cards = styled.div`
- 
+ @media screen and (max-width: 820px){
+        display: grid;
+      }
 `;

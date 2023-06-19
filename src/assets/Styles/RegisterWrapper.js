@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   .form-container {
   width: 400px;
   border-radius: 0.75rem;
-  background-color: rgba(17, 24, 39, .2);
+  background-color: rgba(17, 24, 39);
   box-shadow: var(--box-shadow);
   padding: 2rem;
   color: rgba(243, 244, 246, 1);

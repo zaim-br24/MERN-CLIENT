@@ -6,7 +6,7 @@ import {NavbarCompo, MainContentCompo} from '../components/index'
 export default function Landing() {
   return (
     <Wrapper>
-      <NavbarCompo />
+      {/* <NavbarCompo /> */}
       <MainContentCompo />
     </Wrapper>
   )
@@ -14,5 +14,5 @@ export default function Landing() {
 
 
 const Wrapper = styled.div`
-
+  /* margin: 70px auto 10px ; */
 `;

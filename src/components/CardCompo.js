@@ -6,7 +6,7 @@ import Wrapper from '../assets/Styles/CardWrapper';
 export default function CardCompo() {
   return (
     <Link to="/postId">
-        <Wrapper>
+        <Wrapper className='glass-background'>
         <div className="post_img">
             <img src="" alt="" />
         </div>

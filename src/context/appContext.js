@@ -9,6 +9,9 @@ import {
      LOGIN_USER_BEGIN,
      LOGIN_USER_ERROR,
      LOGIN_USER_SUCCESS,
+     CLOSE_MENU,
+     OPEN_MENU,
+
     } from './actions'
 import reducer from "./reducer";
 import axios from "axios"
@@ -24,14 +27,16 @@ const initialState = {
     alertType:'',
     user:user? JSON.parse(user) : null,
     token: token,
-    userLocation: location || '',
-    userRegistered: user && true
+    userLocation: location || '', 
+    userRegistered: user && true,
+    isDropdownOpen: false,
 }
 
 const AppContext = React.createContext()
 
 const AppProvider = ({children})=>{
     const [state , dispatch] = useReducer(reducer, initialState)
+
     const displayAlert = ()=>{
         dispatch({type:DISPLAY_ALERT})
         clearAlert()
@@ -118,12 +123,19 @@ const AppProvider = ({children})=>{
         clearAlert()
         console.log(currentUser)
     }
+    // --------- dropdown menu
+    
+    const handelCloseMenu = ()=>{
+        dispatch({type: CLOSE_MENU})
+    }
+    const handelOpenMenu = ()=>{
+        dispatch({type: OPEN_MENU})
+    }
+
     
     // const logoutUser = async ()=>{
-
     //     try {
     //         removeUserFromLocalStorag({user, token, location})
-
     //           // Call the logout API endpoint
     //        const response = await axios.post('/api/v1/auth//logout', { 
     //         token: localStorage.getItem('token')
@@ -132,20 +144,23 @@ const AppProvider = ({children})=>{
     //             Authorization: `${localStorage.getItem('token')}`,
     //           },
     //           body: JSON.stringify({ token: localStorage.getItem('token') }),
-
     //         })
     //         // Clear the local storage or state
-
     //     } catch (error) {
     //         console.error('Error logging out:', error);
-
     //     }
-           
-
     // }
 
     return(
-        <AppContext.Provider value={{...state, displayAlert, registerUser, loginUser}}>
+        <AppContext.Provider value={{
+            ...state, 
+            displayAlert,
+            registerUser,             
+            loginUser, 
+            handelCloseMenu, 
+            handelOpenMenu, 
+            }}>
+
             {children}
         </AppContext.Provider>
     )
