@@ -21,8 +21,9 @@ const Logo = styled.div`
      background-clip: text;
     -webkit-background-clip: text;
      color: transparent;
-     font-size:2rem ;
+     font-size:1.5rem ;
      font-weight:800 ;
+     margin-left: 20px
     }
   
 `;

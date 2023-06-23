@@ -16,7 +16,7 @@ export default function AddPost() {
             <p className="publisher-name">Zaim</p>
           </div>
           <form>
-             <Input type='text' name='Title'/>
+             <Input type='text' name='Title' placeholder="Title"/>
              <textarea name="post-content" id="postContent" cols="30" rows="10" placeholder="Add Text"></textarea>
              <Input type='file' />
              <ButtonCompo type='submit' text='Publish'/>
@@ -88,7 +88,9 @@ const Wrapper = styled.div`
         border: 1px solid var(--border-color);
         margin: 10px 0;
         font-size: 18px;
-       font-weight: 500;
+        background-color: white;
+        color: black;
+        font-weight: 500;
     }
     input[type="file"]{
       padding: 20px;

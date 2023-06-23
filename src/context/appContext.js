@@ -11,6 +11,8 @@ import {
      LOGIN_USER_SUCCESS,
      CLOSE_MENU,
      OPEN_MENU,
+     OPEN_DROPDOWN,
+     CLOSE_DROPMENU
 
     } from './actions'
 import reducer from "./reducer";
@@ -30,6 +32,8 @@ const initialState = {
     userLocation: location || '', 
     userRegistered: user && true,
     isDropdownOpen: false,
+    isMenuOpen: false,
+
 }
 
 const AppContext = React.createContext()
@@ -118,7 +122,6 @@ const AppProvider = ({children})=>{
                 } 
             
             })
-            
         }
         clearAlert()
         console.log(currentUser)
@@ -130,6 +133,13 @@ const AppProvider = ({children})=>{
     }
     const handelOpenMenu = ()=>{
         dispatch({type: OPEN_MENU})
+    }
+
+    const handelCloseDropdown = ()=>{
+        dispatch({type:CLOSE_DROPMENU})
+    }
+    const handelOpenDropdown= ()=>{
+        dispatch({type: OPEN_DROPDOWN})
     }
 
     
@@ -159,6 +169,8 @@ const AppProvider = ({children})=>{
             loginUser, 
             handelCloseMenu, 
             handelOpenMenu, 
+            handelCloseDropdown,
+            handelOpenDropdown
             }}>
 
             {children}

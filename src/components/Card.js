@@ -80,7 +80,7 @@ const Wrapper = styled.div`
   margin-top: 10px;
   color: #000;
   text-decoration: none;
-  transition: all .35s ease-in;
+  transition: all .30s ease-in;
 }
 
 .title:hover {

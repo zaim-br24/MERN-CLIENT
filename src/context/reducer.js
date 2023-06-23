@@ -9,6 +9,8 @@ import {
   LOGIN_USER_ERROR,
   CLOSE_MENU,
   OPEN_MENU,
+  CLOSE_DROPMENU,
+  OPEN_DROPDOWN,
 
 } from './actions'
 
@@ -16,16 +18,30 @@ export default function reducer(state , action) {
   if(action.type === CLOSE_MENU){
     return{
       ...state,
-      isDropdownOpen: false
+      isMenuOpen: false
 
     }
   }
   if(action.type === OPEN_MENU){
     return{
       ...state,
+      isMenuOpen: true
+    }
+  }
+  if(action.type === OPEN_DROPDOWN){
+    return{
+      ...state,
       isDropdownOpen: true
     }
   }
+  if(action.type === CLOSE_DROPMENU){
+    return{
+      ...state,
+      isDropdownOpen: false
+
+    }
+  }
+
    if(action.type === DISPLAY_ALERT){
       return {...state,
         showAlert:true,

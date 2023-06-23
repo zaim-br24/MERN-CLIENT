@@ -1,97 +1,86 @@
-import React from 'react'
+import React, {useRef, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { useAppContext } from "../context/appContext";
+import {homeLight,homesolid, bookmarkLight,bookmarsolid,addSquareLight, addSquaresolid} from "../assets/icons/index"
+
+
 library.add(far);
 
-
 export default function SideBar() {
+
+  const {isMenuOpen, handelCloseMenu} = useAppContext()
+  const menuRef = useRef(null)
+
+
+  const handelClickOutside = (event)=>{
+    if(menuRef.current && !menuRef.current.contains(event.target)){
+      handelCloseMenu();
+
+    }
+  }
+
+  useEffect(()=>{
+    document.addEventListener('click', handelClickOutside, true);
+    return ()=>{
+      document.removeEventListener('click', handelClickOutside, true)
+    }
+  })
+
   return (
-    <Wrapper>
-      <div><FontAwesomeIcon className='icon' icon={faHouse} /> <Link to="/">Home</Link></div>
-      <div><FontAwesomeIcon className='icon' icon={faSearch}  /> <Link to="/">Search</Link></div>
-      {/* <div class="group">
-        <svg class="svgIcon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
-        <input placeholder="Search" type="search" class="input"></input>
-      </div> */}
-      <div><FontAwesomeIcon className='icon' icon={faPlus} /> <Link to="/create-post">Add post</Link></div>
-      <div><FontAwesomeIcon className='icon' icon={['far', 'bookmark']} /><Link to="/bookmarked">Bookmark</Link></div>
-      
+    <Wrapper  isOpened={isMenuOpen}>
+
+      <div className='sidebar-container'>
+      <div> <Link to="/"><img className='icon' src={homeLight}></img></Link></div>
+      <div> <Link to="/create-post"><img className='icon' src={addSquareLight}></img></Link></div>
+      <div> <Link to="/"><img className='icon' src={bookmarkLight}></img></Link></div>
+
+          {/* <div><FontAwesomeIcon className='icon' icon={faHouse} /> <Link to="/"></Link></div>
+          <div><FontAwesomeIcon className='icon' icon={faSearch}  /> <Link to="/"></Link></div>
+          <div><FontAwesomeIcon className='icon' icon={faPlus} /> <Link to="/create-post"></Link></div>
+          <div><FontAwesomeIcon className='icon' icon={['far', 'bookmark']} /><Link to="/bookmarked"></Link></div> */}
+      </div>
+
     </Wrapper>
   )
 
 }
 
-
 const Wrapper = styled.div`
+    background-color: orange;
+    width:    600px;
+  .sidebar-container{
     position: fixed;
     left: 0;
     top:54px;
     bottom: 0;
-    width: 220px;
-    background-color:white ;
+    /* width: 220px; */
+    background-color: rgba(255, 255, 255, 0.5); 
+    backdrop-filter: blur(10px);    
     border-right: 1px soild var(--border-color);
     display: flex;
     flex-direction: column;
-    padding: 15px 10px;
+    padding:10px;
+    z-index: 300;
+    transition: all .3s ease-in-out;
+    display: ${props => props.isOpened? 'block' : "none" };
 
-    .group {
-    display: flex;
-    line-height: 28px;
-    align-items: center;
-    position: relative;
-    max-width: 100%;
-    }
-
-    .input {
-    width: 100%;
-    height: 40px;
-    line-height: 28px;
-    padding: 0 1rem;
-    padding-left: 2.5rem;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    outline: none;
-    /* background-color: #f3f3f4; */
-    color: #0d0c22;
-    transition: .3s ease;
-    }
-
-    .input::placeholder {
-    color: #9e9ea7;
-    }
-
-    .input:focus, input:hover {
-    outline: none;
-    border-color: rgba(234,76,137,0.4);
-    background-color: #fff;
-    box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
-    }
-
-    .svgIcon {
-    position: absolute;
-    color: #0d0c22;
-    left: 1rem;
-    fill: #9e9ea7;
-    width: 1rem;
-    height: 1rem;
-    }
     div{
-
-      
       :first-child{
       background-color: whitesmoke;
       }
+      width: 60px;
       padding: 10px;
-      width: 100%;
-      margin: 3px 0 ;
+      margin: 5px 0 ;
       border-radius: 10px;
       transition: all .2s ease-in;
       display: flex;
       align-items: center;
+      cursor: pointer;
       :hover{
         background-color: whitesmoke;
 
@@ -101,13 +90,12 @@ const Wrapper = styled.div`
         width: 70%;
       }
       .icon{
-        font-size: 22px;
-        margin-right: 15px;
-        width: 30%;
+        width: 35px;
         color: black;
       }
     }
     @media screen and (max-width : 900px){
       display: none;
      }
+    }
 `

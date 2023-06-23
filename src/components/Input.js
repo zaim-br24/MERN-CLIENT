@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function Input({type, name, value, label, handelChange, children}) {
+export default function Input({type, name, value, label, handelChange, children, placeholder}) {
   return (
   <Wrapper>
     <label for="password">{label}</label>
-    <input type={type}  value={value} name={name}  onChange={handelChange}/>
+    <input type={type}  value={value} name={name} placeholder={placeholder}  onChange={handelChange}/>
     {
       children && <div className="forgot">
       <a rel="noopener noreferrer" href="/fogetPassword">Forgot Password ?</a>

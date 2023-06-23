@@ -8,6 +8,14 @@ import bookmarkedIcon from './bookmarkedIcon.svg'
 import settingsIcon from './settingsIcon.svg'
 import searchIcon from './searchIcon.svg'
 
+import homeLight from './home-light.svg'
+import homeSolid from './home-solid.svg'
+import bookmarkLight from './bookmark-light.svg'
+import bookmarkSolid from './bookmark-solid.svg'
+import addSquareLight from './add-square-light.svg'
+import addSquareSolid from './add-square-solid.svg'
+
+
 
 
 
@@ -21,5 +29,12 @@ export {
     notificationIcon,
     commentAddIcon,
     settingsIcon,
-    searchIcon
+    searchIcon,
+
+    homeLight,
+    homeSolid,
+    bookmarkLight,
+    bookmarkSolid,
+    addSquareLight,
+    addSquareSolid
 }

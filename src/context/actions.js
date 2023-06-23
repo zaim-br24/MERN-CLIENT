@@ -12,4 +12,6 @@ export const LOGIN_USER_ERROR = "LOGIN_USER_ERROR"
 export const CLOSE_MENU = "CLOSE_MENU"
 export const OPEN_MENU = "OPEN_MENU"
 
+export const CLOSE_DROPMENU = "CLOSE_DROPMENU"
+export const OPEN_DROPDOWN = "OPEN_DROPDOWN"
 

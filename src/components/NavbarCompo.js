@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faCaretDown, faArrowRightFromBracket,faGear} from '@fortawesome/free-solid-svg-icons'
+import { faUser, faCaretDown, faArrowRightFromBracket,faGear, faBars} from '@fortawesome/free-solid-svg-icons'
 import { NavItemsCompo , LogoCompo, ButtonCompo, SideBar,DropdownMenu } from './index';
 // import {Logout} from '../pages/index'
 import {searchIcon} from "../assets/icons/index"
@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function NavbarCompo() {
-  const {userRegistered, handelCloseMenu, handelOpenMenu, isDropdownOpen} = useAppContext()
+  const {userRegistered, handelCloseMenu, handelOpenMenu,handelCloseDropdown,handelOpenDropdown, isDropdownOpen,isMenuOpen} = useAppContext()
 
   // const [isOpen, setIsOpen] = useState(false);
   const [isRotate, setIsRotate] = useState(false);
@@ -20,16 +20,24 @@ export default function NavbarCompo() {
   const toggleDropdown = () => {
     // setIsOpen(!isOpen);
     if(isDropdownOpen){
-      handelCloseMenu();
+      handelCloseDropdown();
     }else{
-      handelOpenMenu();
+      handelOpenDropdown();
     }
     setIsRotate(!isRotate);
   };
 
+  const toggleMenu = ()=>{
+    if(isMenuOpen){
+      handelCloseMenu();
+    }else{
+      handelOpenMenu()
+    }
+  }
+
   const handelClickOutside = (event)=>{
     if(dropdownRef.current && !dropdownRef.current.contains(event.target)){
-      handelCloseMenu();
+      handelCloseDropdown();
 
     }
   }
@@ -44,8 +52,14 @@ export default function NavbarCompo() {
   return (
     <Nav  ref={dropdownRef}>
        {/* <SideBar/> */}
-      <LogoCompo />
-      
+       <div className='burger-menu'>
+        <div className='burger-icon-container'>
+           <FontAwesomeIcon onClick={toggleMenu} className='burger-icon' icon={faBars} />
+        </div>
+        <LogoCompo />
+       </div>
+        
+       
        <div className="nav_search_box">
         <div className="search_icon">
           <img src={searchIcon} alt="" />
@@ -86,15 +100,36 @@ const Nav = styled.nav`
    justify-content: space-between;
    align-items: center ;
    padding:5px  1.5rem;
-   background-color: var( --primary-bg-color) ;
-   
+   background-color: rgba(255, 255, 255, 0.5); 
+    backdrop-filter: blur(10px);
    border-bottom: 1px solid var(--border-color);
    width: 100%;
    /* height: 60px; */
    top: 0;
    z-index: 100;
    position: fixed;
-   
+   .burger-menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .burger-icon-container{
+      padding: 10px;
+      width: 60px;
+      margin-left: -10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      :hover{
+        background-color: whitesmoke;
+        border-radius: 10px;
+      }
+      .burger-icon{
+      font-size: 1.5rem;
+      cursor: pointer;
+      }
+    }
+ 
+   }
    .icon{
     font-size:  23px;
     color: var( --font-color);
@@ -135,6 +170,7 @@ const Nav = styled.nav`
     border: 1px solid var(--border-color) ;
     padding: 6px 10px;
     border-radius:20px ;
+  
 
     @media screen and (max-width : 1000px){
       display: none;
@@ -157,6 +193,7 @@ const Nav = styled.nav`
       font-weight:500 ;
       font-family: var(--font-family);
       letter-spacing:.7px ;
+      background: none;
     }
    }
 

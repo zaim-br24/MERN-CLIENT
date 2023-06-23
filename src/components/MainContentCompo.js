@@ -17,7 +17,7 @@ const Main = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  margin: 71px 20px 20px 240px;
+  margin: 71px 20px;
   @media screen and (max-width : 900px){
        margin: 71px 20px 20px 20px;
      }
