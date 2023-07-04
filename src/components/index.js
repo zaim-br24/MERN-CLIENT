@@ -15,7 +15,7 @@ import DropdownMenu from './DropdownMenu';
 import Card from "./Card";
 import Cards from "./Cards";
 import ClipShotsCards from './ClipShotsCards'
-
+import WatchCards from "./WatchCards";
 
 
 
@@ -38,5 +38,6 @@ export {
     Card,
     Cards,
     ClipShotsCards,
+    WatchCards
     
 }

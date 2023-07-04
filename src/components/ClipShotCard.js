@@ -5,27 +5,24 @@ import styled from 'styled-components'
 
 export default function ClipShotsCard() {
   return (
-    <Wrapper>
-        <div class="card">
+    <Wrapper className='ClipShot-card'>
             <div class="card-image"></div>
             {/* <div class="category"> Illustration </div> */}
             <div class="heading"> A heading that must span over two lines
-                <div class="author"> By <span class="name">Abi</span> 4 days ago</div>
+                <div class="author"> By <span class="name">Abi</span> 4 days ago   - <span>3.2K views</span></div>
             </div>
-        </div>
+      
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
-
-.card {
   min-width: 200px;
   height: 300px;
-  /* background: white; */
-  /* padding: .4em; */
-  border-radius: 6px;
-  /* margin: 5px; */
+
+  border-radius: 10px;
+  margin-bottom: 30px;
+  cursor: pointer;
   
 .card-image {
   background-color: rgb(236, 236, 236);
@@ -75,6 +72,5 @@ const Wrapper = styled.div`
 }
 
 
-}
 
 `;

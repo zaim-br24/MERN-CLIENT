@@ -22,4 +22,7 @@ const Wrapper = styled.div`
     z-index: 90;
     /* background-color: #fff; */
     margin: 0 auto;
+    @media screen and (max-width : 900px){
+      right: 0;
+     }
 `;
