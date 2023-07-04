@@ -3,7 +3,7 @@ import NavItemCompo from "./NavItemCompo";
 import NavItemsCompo from "./NavItemsCompo";
 import ContentCompo from "./ContentCompo";
 import MainContentCompo from "./MainContentCompo";
-import SidebarCompo from "./SidebarCompo";
+import Recommendation from "./Recommendation";
 import CardsCompo from "./CardsCompo";
 import CardCompo from "./CardCompo";
 import LogoCompo from "./LogoCompo";
@@ -14,6 +14,8 @@ import SideBar from "./SideBar";
 import DropdownMenu from './DropdownMenu';
 import Card from "./Card";
 import Cards from "./Cards";
+import ClipShotsCards from './ClipShotsCards'
+
 
 
 
@@ -24,7 +26,7 @@ export {
     NavItemCompo,
     ContentCompo,
     MainContentCompo,
-    SidebarCompo,
+    Recommendation,
     CardCompo,
     CardsCompo,
     LogoCompo,
@@ -35,5 +37,6 @@ export {
     DropdownMenu,
     Card,
     Cards,
+    ClipShotsCards,
     
 }

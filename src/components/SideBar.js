@@ -51,23 +51,23 @@ export default function SideBar() {
 }
 
 const Wrapper = styled.div`
-    background-color: orange;
-    width:    600px;
+
   .sidebar-container{
     position: fixed;
     left: 0;
-    top:54px;
+    top:55px;
     bottom: 0;
     /* width: 220px; */
+    border: 1px soild black;
     background-color: rgba(255, 255, 255, 0.5); 
     backdrop-filter: blur(10px);    
-    border-right: 1px soild var(--border-color);
     display: flex;
     flex-direction: column;
     padding:10px;
     z-index: 300;
     transition: all .3s ease-in-out;
-    display: ${props => props.isOpened? 'block' : "none" };
+
+    /* display: ${props => props.isOpened? 'block' : "none" }; */
 
     div{
       :first-child{
@@ -82,7 +82,7 @@ const Wrapper = styled.div`
       align-items: center;
       cursor: pointer;
       :hover{
-        background-color: whitesmoke;
+        background-color:  rgba(35, 165, 213, 0.5);
 
       }
       a{

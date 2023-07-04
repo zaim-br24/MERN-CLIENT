@@ -3,22 +3,24 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment,faHeart} from '@fortawesome/free-regular-svg-icons';
 import {faShare} from '@fortawesome/free-solid-svg-icons';
+import {bookmarkLight} from '../assets/icons/index'
+import { Link } from 'react-router-dom';
 
 export default function Card() {
   return (
-     <Wrapper class="post-card">
+     <Wrapper className="post-card">
         <div className='publisher'>
             <div class="avatar"></div>
             <a class="publisher-name">Zaim br -<span className='published-date'> 4 min ago</span> <button className='follow-btn'>follow</button></a>
 
         </div>
         <a class="title" href="#">7 Tools for Faster Development in React</a>
-        <span class="datetime">3 min to read</span>
-        <div class="image-preview"></div>
+        {/* <span class="datetime">3 min to read</span> */}
+        {/* <div class="image-preview"></div> */}
         <div class="comment-like">
             <span><FontAwesomeIcon icon={faHeart} />12</span>
             <span><FontAwesomeIcon icon={faComment} />8</span>
-            <span><FontAwesomeIcon icon={faShare} /></span>
+            <span  ><Link to="/"><img className='icon' src={bookmarkLight}></img> </Link></span>
         </div>
     </Wrapper>
   )
@@ -28,7 +30,8 @@ export default function Card() {
 const Wrapper = styled.div`
   min-width: 250px;
   /* background: #F2F3F4; */
-  background-color:#FFFF;
+  background-color: rgba(255, 255, 255, 0.5); 
+  backdrop-filter: blur(10px);   
   /* border: 1px solid rgb(84 90 106); */
   border-radius: 10px;
   display: flex;
@@ -36,6 +39,14 @@ const Wrapper = styled.div`
   padding: 10px;
 
 
+  a{
+    font-weight: 600;
+    width: 70%;
+  }
+  .icon{
+    width: 30px;
+    color: black;
+  }
 
 .publisher{
     display: flex;
@@ -55,7 +66,7 @@ const Wrapper = styled.div`
         margin-left: 10px;
     }
     .published-date{
-        font-size:.8rem;
+        font-size:.7rem;
     }
     .follow-btn{
         border: none;
@@ -74,10 +85,10 @@ const Wrapper = styled.div`
     }
 }
 .title {
-  font-size: 20px;
+  font-size: 16px;
   line-height: 22px;
   font-weight: 600;
-  margin-top: 10px;
+  margin: 10px 0;
   color: #000;
   text-decoration: none;
   transition: all .30s ease-in;
@@ -94,7 +105,7 @@ const Wrapper = styled.div`
 .datetime {
   font-size: 12px;
   color: rgb(168 179 207);
-  margin: 10px 0;
+  margin: 3px 0;
 }
 
 .image-preview {
@@ -118,9 +129,10 @@ const Wrapper = styled.div`
   cursor: pointer;
   height: 40px;
   width: 50px;
-  padding: 0 3px;
+  /* padding: 0 3px; */
   display: flex;
   align-items: center;
+  margin: auto;
   justify-content: center;
   font-weight: 900;
   border-radius: 10px;

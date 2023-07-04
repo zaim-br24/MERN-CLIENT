@@ -101,8 +101,9 @@ const Nav = styled.nav`
    align-items: center ;
    padding:5px  1.5rem;
    background-color: rgba(255, 255, 255, 0.5); 
-    backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
    border-bottom: 1px solid var(--border-color);
+   
    width: 100%;
    /* height: 60px; */
    top: 0;

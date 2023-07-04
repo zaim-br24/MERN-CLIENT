@@ -11,13 +11,14 @@ export default function SidebarCompo() {
 
 const Wrapper = styled.div`
     width: 100%;
-    border-bottom: 1px solid var(--border-color) ;
+    border: 1px solid var(--border-color) ;
+
     padding: 10px ;
     background-color: rgba(255, 255, 255, 0.5); 
     backdrop-filter: blur(10px);
     position: fixed;
     top: 54px;
-    right: 0px;
+    right: -80px;
     z-index: 90;
     /* background-color: #fff; */
     margin: 0 auto;
