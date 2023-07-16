@@ -1,17 +1,27 @@
-import React from "react"
+import React, {useState} from "react"
 import styled from "styled-components"
 import { Input, ButtonCompo} from "../../components/index"
 
 export default function AddPost() {
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  const handleOpenOverlay = () => {
+    setShowOverlay(true);
+  };
+
+  const handleCloseOverlay = () => {
+    setShowOverlay(false);
+  };
+
   return (
     <Wrapper>
-    <div className="glass-background container">
+
+    {/* <div className="glass-background container">
       <header>
         <h2>Create Post</h2>
       </header>
         <div className="creator">
           <div className="creator-info">
-            {/* <img src="" alt="" className="creator-img" /> */}
             <div></div>
             <p className="publisher-name">Zaim</p>
           </div>
@@ -23,18 +33,21 @@ export default function AddPost() {
           </form>
 
         </div>
-      </div>
+      </div> */}
+
     </Wrapper>
   )
 }
 
 
 const Wrapper = styled.div`
+ margin-top: 70px ;
   width: 100%;
   height: 100vh;
   display: flex; 
    align-items: center; 
   justify-content:center ;
+
   
 .container{
   width:70%;

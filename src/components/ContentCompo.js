@@ -2,14 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-import {Cards, ClipShotsCards, WatchCards} from './index'
+import {RedooCards, ClipShotsCards, WatchCards} from './index'
 
 export default function ContentCompo() {
   return (
     <Wrapper className='content-compo'>
         {/* <CardsCompo/> */}
         <div className='category-title'> <Link to='/reedos'><p>Top Recent Reedos.</p></Link></div>
-        <Cards/>
+        <RedooCards/>
 
         <div className='category-title'> <Link to='/clipShots'><p>Top Recent ClipShots.</p></Link></div>
         <ClipShotsCards/>

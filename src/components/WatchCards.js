@@ -5,16 +5,16 @@ import styled from 'styled-components'
 export default function WatchCards() {
   return (
     <Wrapper>
-    <WatchCard/>
-    <WatchCard/>
-    <WatchCard/>
-    <WatchCard/>
-    <WatchCard/>
-    <WatchCard/>
-    <WatchCard/>
-    <WatchCard/>
-    <WatchCard/>
-    <WatchCard/>
+    <WatchCard id="1"/>
+    <WatchCard id="2"/>
+    <WatchCard id="3"/>
+    <WatchCard id="4"/>
+    <WatchCard id="5"/>
+    <WatchCard id="6"/>
+    <WatchCard id="7"/>
+    <WatchCard id="8"/>
+    <WatchCard id="9"/>
+    <WatchCard id="10"/>
     </Wrapper>
   )
 }

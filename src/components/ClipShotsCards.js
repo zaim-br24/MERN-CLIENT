@@ -5,12 +5,12 @@ import styled from 'styled-components'
 export default function ClipShotsCards() {
   return (
     <Wrapper>
-        <ClipShotCard/>
-        <ClipShotCard/>
-        <ClipShotCard/>
-        <ClipShotCard/>
-        <ClipShotCard/>
-        <ClipShotCard/>
+        <ClipShotCard id="1"/>
+        <ClipShotCard id="2"/>
+        <ClipShotCard id="3"/>
+        <ClipShotCard id="4"/>
+        <ClipShotCard id="5"/>
+        <ClipShotCard id="6"/>
     </Wrapper>
   )
 }

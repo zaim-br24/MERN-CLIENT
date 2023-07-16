@@ -6,18 +6,16 @@ import {faShare} from '@fortawesome/free-solid-svg-icons';
 import {bookmarkLight} from '../assets/icons/index'
 import { Link } from 'react-router-dom';
 
-export default function Card() {
+export default function RedooCard({id}) {
   return (
      <Wrapper className="post-card">
-        <div className='publisher'>
-            <div class="avatar"></div>
-            <a class="publisher-name">Zaim br -<span className='published-date'> 4 min ago</span> <button className='follow-btn'>follow</button></a>
+       <div className='publisher'>
+            <div className="avatar"></div>
+            <a className="publisher-name">Zaim br -<span className='published-date'> 4 min ago</span> <button className='follow-btn'>follow</button></a>
 
         </div>
-        <a class="title" href="#">7 Tools for Faster Development in React</a>
-        {/* <span class="datetime">3 min to read</span> */}
-        {/* <div class="image-preview"></div> */}
-        <div class="comment-like">
+        <Link className="title" to={`/redoo/${id}`}>7 Tools for Faster Development in React</Link>
+        <div className="comment-like">
             <span><FontAwesomeIcon icon={faHeart} />12</span>
             <span><FontAwesomeIcon icon={faComment} />8</span>
             <span  ><Link to="/"><img className='icon' src={bookmarkLight}></img> </Link></span>

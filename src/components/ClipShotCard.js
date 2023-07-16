@@ -1,17 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 
 
-export default function ClipShotsCard() {
+export default function ClipShotsCard({id}) {
   return (
     <Wrapper className='ClipShot-card'>
+      <Link to={`/clipshot/${id}`}>
             <div class="card-image"></div>
             {/* <div class="category"> Illustration </div> */}
             <div class="heading"> A heading that must span over two lines
                 <div class="author"> By <span class="name">Abi</span> 4 days ago   - <span>3.2K views</span></div>
             </div>
-      
+      </Link>
     </Wrapper>
   )
 }

@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
-
-export default function WatchCard() {
+export default function WatchCard({id}) {
   return (
     <Wrapper class="card">
+      <Link to={`/watch/${id}`}>
         <div class="image"></div>
         <div class="content">
             <a href="#">
@@ -17,6 +18,8 @@ export default function WatchCard() {
             <a class="publisher-name">Zaim br -<span className='published-date'> 4 min ago</span> - 23k views</a>
         </div>
         </div>
+    </Link>
+
         </Wrapper>
 
     )

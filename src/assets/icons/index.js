@@ -15,6 +15,14 @@ import bookmarkSolid from './bookmark-solid.svg'
 import addSquareLight from './add-square-light.svg'
 import addSquareSolid from './add-square-solid.svg'
 
+import watchLight from './watch-light.svg'
+import watchSolid from './watch-solid.svg'
+import clipshotLight from './clipshot-light.svg'
+import clipshotSolid from './clipshot-solid.svg'
+import redoosLight from './redoos-light.svg'
+import redoosSolid from './redoos-solid.svg'
+
+
 
 
 
@@ -36,5 +44,11 @@ export {
     bookmarkLight,
     bookmarkSolid,
     addSquareLight,
-    addSquareSolid
+    addSquareSolid,
+    redoosLight,
+    redoosSolid,
+    watchLight,
+    watchSolid,
+    clipshotLight,
+    clipshotSolid,
 }

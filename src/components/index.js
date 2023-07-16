@@ -12,10 +12,11 @@ import Input from "./Input";
 import Alert from "./Alert";
 import SideBar from "./SideBar";
 import DropdownMenu from './DropdownMenu';
-import Card from "./Card";
-import Cards from "./Cards";
+import RedooCard from "./RedooCard";
+import RedooCards from "./RedooCards";
 import ClipShotsCards from './ClipShotsCards'
 import WatchCards from "./WatchCards";
+import SideBarIcon from "./SideBarIcon";
 
 
 
@@ -35,9 +36,10 @@ export {
     Alert,
     SideBar,
     DropdownMenu,
-    Card,
-    Cards,
+    RedooCard,
+    RedooCards,
     ClipShotsCards,
-    WatchCards
+    WatchCards,
+    SideBarIcon
     
 }
