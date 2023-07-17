@@ -27,10 +27,7 @@ export default function WatchCard({id}) {
 
 const Wrapper = styled.div`
   min-width: 250px;
-
   border-radius: 10px;
-  /* background-color: #fff; */
-  /* box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); */
   border: 1px solid transparent;
   cursor: pointer;
 

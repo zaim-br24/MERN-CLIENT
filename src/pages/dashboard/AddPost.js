@@ -3,16 +3,7 @@ import styled from "styled-components"
 import { Input, ButtonCompo} from "../../components/index"
 
 export default function AddPost() {
-  const [showOverlay, setShowOverlay] = useState(false);
-
-  const handleOpenOverlay = () => {
-    setShowOverlay(true);
-  };
-
-  const handleCloseOverlay = () => {
-    setShowOverlay(false);
-  };
-
+  
   return (
     <Wrapper>
 

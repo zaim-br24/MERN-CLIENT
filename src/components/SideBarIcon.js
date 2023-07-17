@@ -2,7 +2,7 @@ import React ,{useState, useEffect} from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-export default function SideBarIcon({path, src, id}) {
+export default function SideBarIcon({path, src, id, handleClick}) {
   
   const [activeButton, setActiveButton] = useState(null);
 
@@ -39,7 +39,7 @@ export default function SideBarIcon({path, src, id}) {
   return (
     <Wrapper 
       className={`sidebar-btn ${id === activeButton ? 'active' : ''}` }
-      onClick={()=> handleButtonClick(id)}
+      onClick={handleClick}
     >
          <Link to={path}><img className="icon" src={src}></img></Link>
     </Wrapper>

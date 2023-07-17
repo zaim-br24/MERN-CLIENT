@@ -1,13 +1,19 @@
 import React from 'react'
 import styled from 'styled-components';
-export default function Overly({children, handelClose}) {
+import { useAppContext } from '../context/appContext';
+
+
+export default function Overly({children}) {
  
+  const {handleCloseOverly} = useAppContext()
+
     return (
         <Wrapper className="overlay">
+          
           <div className="overlay-content">
             {children}
-            <button className="close-button" onClick={handelClose}>
-              Close
+            <button className="close-button" onClick={handleCloseOverly}>
+              X
             </button>
           </div>
         </Wrapper>
@@ -28,12 +34,30 @@ const Wrapper = styled.div`
   z-index: 9999;
 
   .overlay-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
   .close-button {
-  margin-top: 10px;
+    position: absolute;
+    top: -15px;
+    right: -20px;
+    color: white;
+    background:none;
+    outline: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color:  rgb(35, 165, 213);
+
+
     } 
  }
 

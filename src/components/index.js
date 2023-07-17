@@ -17,7 +17,7 @@ import RedooCards from "./RedooCards";
 import ClipShotsCards from './ClipShotsCards'
 import WatchCards from "./WatchCards";
 import SideBarIcon from "./SideBarIcon";
-
+import Overly from "./Overly";
 
 
 
@@ -40,6 +40,7 @@ export {
     RedooCards,
     ClipShotsCards,
     WatchCards,
-    SideBarIcon
+    SideBarIcon,
+    Overly,
     
 }

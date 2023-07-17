@@ -15,3 +15,7 @@ export const OPEN_MENU = "OPEN_MENU"
 export const CLOSE_DROPMENU = "CLOSE_DROPMENU"
 export const OPEN_DROPDOWN = "OPEN_DROPDOWN"
 
+export const OPEN_OVERLY = "OPEN_OVERLY"
+export const CLOSE_OVERLY = "CLOSE_OVERLY"
+
+

@@ -15,7 +15,6 @@ export default function ContentCompo() {
         <ClipShotsCards/>
 
         <div className='category-title'> <Link to='/watch'><p>Top Recent Videos.</p></Link></div>
-
         <WatchCards/>
 
     </Wrapper>
@@ -24,10 +23,10 @@ export default function ContentCompo() {
 
 
 const Wrapper = styled.div` 
-  max-width: 1400px;
+    /* max-width: 1400px; */
     margin-top: 40px;
     .category-title{
-      margin: 25px 0;
+      margin: 30px 0;
       width: 300px;
       p{
       font-size: 1.5rem;

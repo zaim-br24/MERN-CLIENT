@@ -22,6 +22,6 @@ export default function WatchCards() {
 const Wrapper = styled.div`
     border-radius: 10px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax( 220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax( 240px, 1fr));
     grid-gap: 10px;
 `

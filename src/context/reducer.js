@@ -11,6 +11,8 @@ import {
   OPEN_MENU,
   CLOSE_DROPMENU,
   OPEN_DROPDOWN,
+  OPEN_OVERLY,
+  CLOSE_OVERLY,
 
 } from './actions'
 
@@ -38,6 +40,20 @@ export default function reducer(state , action) {
     return{
       ...state,
       isDropdownOpen: false
+
+    }
+  }
+  if(action.type === CLOSE_OVERLY){
+    return{
+      ...state,
+      isOverlyOpen: false
+
+    }
+  }
+  if(action.type === OPEN_OVERLY){
+    return{
+      ...state,
+      isOverlyOpen: true
 
     }
   }

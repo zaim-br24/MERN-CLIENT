@@ -12,7 +12,9 @@ import {
      CLOSE_MENU,
      OPEN_MENU,
      OPEN_DROPDOWN,
-     CLOSE_DROPMENU
+     CLOSE_DROPMENU,
+     CLOSE_OVERLY,
+     OPEN_OVERLY
 
     } from './actions'
 import reducer from "./reducer";
@@ -33,6 +35,7 @@ const initialState = {
     userRegistered: user && true,
     isDropdownOpen: false,
     isMenuOpen: false,
+    isOverlyOpen: false,
 
 }
 
@@ -142,7 +145,12 @@ const AppProvider = ({children})=>{
         dispatch({type: OPEN_DROPDOWN})
     }
 
-    
+    const handleCloseOverly = ()=>{
+        dispatch({type: CLOSE_OVERLY})
+    }
+    const handleOpenOverly = ()=>{
+        dispatch({type: OPEN_OVERLY})
+    }
     // const logoutUser = async ()=>{
     //     try {
     //         removeUserFromLocalStorag({user, token, location})
@@ -170,7 +178,9 @@ const AppProvider = ({children})=>{
             handelCloseMenu, 
             handelOpenMenu, 
             handelCloseDropdown,
-            handelOpenDropdown
+            handelOpenDropdown,
+            handleOpenOverly,
+            handleCloseOverly
             }}>
 
             {children}
