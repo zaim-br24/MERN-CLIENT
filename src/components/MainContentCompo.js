@@ -16,14 +16,13 @@ const Main = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  margin: 65px 10px;
-  margin-left: 90px;
+  /*  */
   padding: 5px;
   
 
   
   @media screen and (max-width : 900px){
-       margin: 71px 20px 20px 20px;
+       margin: 71px 5px 5px 5px;
      }
 
  

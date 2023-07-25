@@ -50,7 +50,7 @@ export default function NavbarCompo() {
   })
 
   return (
-    <Nav  ref={dropdownRef}>
+    <Nav className='glass-background' ref={dropdownRef}>
        {/* <SideBar/> */}
        <div className='burger-menu'>
         <div className='burger-icon-container'>
@@ -100,8 +100,8 @@ const Nav = styled.nav`
    justify-content: space-between;
    align-items: center ;
    padding:5px  1.5rem;
-   background-color: rgba(255, 255, 255, 0.5); 
-  backdrop-filter: blur(10px);
+   /* background-color: rgba(255, 255, 255, 1); */
+   /* backdrop-filter: blur(10px); */
    border-bottom: 1px solid var(--border-color);
    
    width: 100%;
@@ -115,8 +115,8 @@ const Nav = styled.nav`
     justify-content: space-between;
     .burger-icon-container{
       padding: 10px;
-      width: 60px;
-      margin-left: -10px;
+      width: 35px;
+      margin-left: -8px;
       display: flex;
       align-items: center;
       justify-content: center;

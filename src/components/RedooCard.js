@@ -10,11 +10,13 @@ export default function RedooCard({id}) {
   return (
      <Wrapper className="post-card">
        <div className='publisher'>
+       <div className='publisher-details'>
             <div className="avatar"></div>
-            <a className="publisher-name">Zaim br -<span className='published-date'> 4 min ago</span> <button className='follow-btn'>follow</button></a>
-
-        </div>
-        <Link className="title" to={`/redoo/${id}`}>7 Tools for Faster Development in React</Link>
+            <a className="publisher-name"> Zaim br -<span className='published-date'> 4 min ago</span></a>
+      </div>
+      <button className='follow-btn'>follow</button>
+      </div>
+        <Link className="post-title" to={`/redoo/${id}`}>7 Tools for Faster Development in React</Link>
         <div className="comment-like">
             <span><FontAwesomeIcon icon={faHeart} />12</span>
             <span><FontAwesomeIcon icon={faComment} />8</span>
@@ -26,10 +28,10 @@ export default function RedooCard({id}) {
 
 
 const Wrapper = styled.div`
-  min-width: 250px;
+  min-width: 350px;
   /* background: #F2F3F4; */
-  background-color: rgba(255, 255, 255, 0.5); 
-  backdrop-filter: blur(10px);   
+  background-color: rgba(255, 255, 255, 1); 
+  /* backdrop-filter: blur(10px);    */
   /* border: 1px solid rgb(84 90 106); */
   border-radius: 10px;
   display: flex;
@@ -46,59 +48,6 @@ const Wrapper = styled.div`
     color: black;
   }
 
-.publisher{
-    display: flex;
-    align-items: center;
-    /* justify-content: space-between; */
-    position: relative;
-    .avatar {
-    height: 35px;
-    width: 35px;
-    border-radius: 50%;
-    background-color: blueviolet;
-    background-image: linear-gradient(to top left, blueviolet, #23a6d5);
-    }
-    .publisher-name{
-        font-size: 1rem;
-        font-weight: 600;
-        margin-left: 10px;
-    }
-    .published-date{
-        font-size:.7rem;
-    }
-    .follow-btn{
-        border: none;
-        background-color: #23a6d5;
-        padding: 5px;
-        border-radius: 10px;
-        color: #FFFF;
-        font-weight: 600;
-        position: absolute;
-        right: 0;
-        cursor: pointer;
-
-        :hover{
-            opacity: .7;
-        }
-    }
-}
-.title {
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 600;
-  margin: 10px 0;
-  color: #000;
-  text-decoration: none;
-  transition: all .30s ease-in;
-}
-
-.title:hover {
-  text-decoration: underline blueviolet;
-  background: linear-gradient(to right, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-     background-clip: text;
-    -webkit-background-clip: text;
-     color: transparent;
-}
 
 .datetime {
   font-size: 12px;

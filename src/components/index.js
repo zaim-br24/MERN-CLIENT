@@ -1,6 +1,4 @@
-import NavbarCompo from "./NavbarCompo";
-import NavItemCompo from "./NavItemCompo";
-import NavItemsCompo from "./NavItemsCompo";
+import Navbar from "./Navbar";
 import ContentCompo from "./ContentCompo";
 import MainContentCompo from "./MainContentCompo";
 import Recommendation from "./Recommendation";
@@ -10,7 +8,9 @@ import LogoCompo from "./LogoCompo";
 import ButtonCompo from "./ButtonCompo";
 import Input from "./Input";
 import Alert from "./Alert";
-import SideBar from "./SideBar";
+import SmallSidebar from "./SmallSideBar";
+import BigSidebar from "./BigSidebar";
+
 import DropdownMenu from './DropdownMenu';
 import RedooCard from "./RedooCard";
 import RedooCards from "./RedooCards";
@@ -18,13 +18,12 @@ import ClipShotsCards from './ClipShotsCards'
 import WatchCards from "./WatchCards";
 import SideBarIcon from "./SideBarIcon";
 import Overly from "./Overly";
-
+import CommentsBox from "./CommentsBox";
+import CommentInput from "./CommentInput";
 
 
 export {
-    NavbarCompo,
-    NavItemsCompo,
-    NavItemCompo,
+    Navbar,
     ContentCompo,
     MainContentCompo,
     Recommendation,
@@ -34,7 +33,8 @@ export {
     ButtonCompo,
     Input,
     Alert,
-    SideBar,
+    SmallSidebar,
+    BigSidebar,
     DropdownMenu,
     RedooCard,
     RedooCards,
@@ -42,5 +42,6 @@ export {
     WatchCards,
     SideBarIcon,
     Overly,
-    
+    CommentsBox,
+    CommentInput
 }

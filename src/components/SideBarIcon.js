@@ -2,7 +2,7 @@ import React ,{useState, useEffect} from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-export default function SideBarIcon({path, src, id, handleClick}) {
+export default function SideBarIcon({path, src, id,text, handleClick}) {
   
   const [activeButton, setActiveButton] = useState(null);
 
@@ -15,43 +15,23 @@ export default function SideBarIcon({path, src, id, handleClick}) {
     setActiveButton(buttonId)
 
   };
-  // useEffect(() => {
 
-  //   const removeCssClass = () => {
-  //     const buttons = document.querySelectorAll('.sidebar-btn');
-  //     buttons.forEach((button) => {
-  //       button.classList.remove('active'); // Replace 'your-css-class' with the class you want to remove
-  //     });
-  //   };
-
-  //   const buttons = document.querySelectorAll('.sidebar-btn');
-  //   buttons.forEach((button) => {
-  //     button.addEventListener('click', removeCssClass);
-  //   });
-
-  //   return () => {
-  //     buttons.forEach((button) => {
-  //       button.removeEventListener('click', removeCssClass);
-  //     });
-  //   };
-  // }, []);
 
   return (
     <Wrapper 
       className={`sidebar-btn ${id === activeButton ? 'active' : ''}` }
       onClick={handleClick}
     >
-         <Link to={path}><img className="icon" src={src}></img></Link>
+         <Link to={path}>
+            <img className="icon" src={src}></img>{text}
+            {/* <p>{text}</p> */}
+         </Link>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
-
-      /* :first-child{
-      background-color: whitesmoke;
-      } */
-      width: 60px;
+      width: 45px;
       padding: 10px;
       margin: 5px 0 ;
       border-radius: 10px;
@@ -65,13 +45,17 @@ const Wrapper = styled.div`
       }
       a{
         font-weight: 600;
-        width: 70%;
-
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         .icon{
         width: 35px;
         color: black;
+        /* margin: 0 auto; */
       }
-      }
+    }
       
 
 `

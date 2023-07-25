@@ -19,7 +19,7 @@ export default function ClipShotsCard({id}) {
 }
 
 const Wrapper = styled.div`
-  min-width: 200px;
+  min-width: 180px;
   height: 300px;
 
   border-radius: 10px;

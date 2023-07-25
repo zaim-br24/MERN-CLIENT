@@ -73,13 +73,13 @@ const Wrapper = styled.div`
       "profile statistics statistics"
       "profile posts posts"; 
       padding: 10px;
-       margin: 20px auto;
-      margin-top: 70px;
-      margin-left:85px;
+      margin: 20px auto;
+      margin-top: 105px;
+      margin-left:90px;
       /* margin: 71px 20px 20px 245px; */
 
       @media screen and (max-width : 900px){
-        margin: 71px 20px 20px 20px;
+        margin: 105px 10px 10px 10px;
       }
       /* width: 70%; */
       max-width: 70%;

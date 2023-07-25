@@ -19,7 +19,7 @@ import { SideBarIcon } from './index'
 
 library.add(far);
 
-export default function SideBar() {
+export default function SmallSidebar() {
 
 
   const {isMenuOpen, handelCloseMenu, handleOpenOverly} = useAppContext()
@@ -42,7 +42,6 @@ export default function SideBar() {
 
   return (
     <Wrapper  isOpened={isMenuOpen}>
-
       <div className='sidebar-container'>
       <SideBarIcon id={1} path='/' src={homeLight}/>
       <SideBarIcon id={2} path='/redoos' src={redoosLight}/>
@@ -51,13 +50,6 @@ export default function SideBar() {
       <SideBarIcon id={5} src={addSquareLight} handleClick={handleOpenOverly}/>
       <SideBarIcon id={6} path='/' src={bookmarkLight}/>
 
-
-      {/* <div> <Link to="/"><img className='icon' src={homeLight}></img></Link></div>
-      <div> <Link to="/"><img className='icon' src={redoosLight}></img></Link></div>
-      <div> <Link to=""><img className='icon' src={clipshotLight}></img></Link></div>
-      <div> <Link to="/"><img className='icon' src={watchLight}></img></Link></div>
-      <div> <Link to="/create-post"><img className='icon' src={addSquareLight}></img></Link></div>
-      <div> <Link to="/"><img className='icon' src={bookmarkLight}></img></Link></div> */}
       </div>
 
     </Wrapper>
@@ -66,16 +58,20 @@ export default function SideBar() {
 }
 
 const Wrapper = styled.div`
-
+   /* width: 50px; */
+   background-color: orange;
+   width: 100%;
   .sidebar-container{
     position: fixed;
     left: 0;
     top:54px;
     bottom: 0;
     /* width: 220px; */
+   box-shadow: var(--box-shadow);
+
     border: 1px soild black;
-    background-color: rgba(255, 255, 255, 0.5); 
-    backdrop-filter: blur(10px);    
+    background-color: rgba(255, 255, 255, 1); 
+    /* backdrop-filter: blur(10px);     */
     display: flex;
     flex-direction: column;
     padding:10px;
@@ -83,7 +79,7 @@ const Wrapper = styled.div`
     transition: all .3s ease-in-out;
     /* display: ${props => props.isOpened? 'block' : "none" }; */
 
-    @media screen and (max-width : 900px){
+    @media screen and (max-width : 992px){
       display: none;
      }
     }

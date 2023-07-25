@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import {Landing, Settings,Home, Register, ProtectedRoute, Error} from "./pages/index"
-import {AddPost, Profile, SharedLayout, Clipshots, Watch, Redoos} from './pages/dashboard/index'
+import {AddPost, Profile, SharedLayout, Clipshots, Watch, Redoos, ClipshotSinglePage, WatchSinglePage, RedoosSinglePage} from './pages/dashboard/index'
 
 
 import { useAppContext } from './context/appContext.js'
@@ -22,9 +22,14 @@ function App() {
               <Route path="profile" element={<Profile />} />
               <Route path="create-post" element={<AddPost />} />
               <Route path="settings" element={<Settings />} />
-              <Route path="Redoos" element={<Redoos />} />
-              <Route path="Clipshots" element={<Clipshots />} />
+              <Route path="redoos" element={<Redoos />} />
               <Route path="watch" element={<Watch />} />
+              <Route path="clipshots" element={<Clipshots />} />
+              
+              <Route path="watch/:id" element={<WatchSinglePage />} />
+              <Route path="clipshot/:id" element={<ClipshotSinglePage />} />
+              <Route path="redoo/:id" element={<RedoosSinglePage />} />
+
 
 
               </Route>

@@ -36,7 +36,6 @@ body{
   --secondary-bg-color: #3a3a3a;
   --font-color: ##f2f2f2;
   --heading-color: #FFFFFF;
-  color: rgba(35, 165, 213, 0.449);
   
 }
 
@@ -54,12 +53,13 @@ a{
   background-color:  rgba(35, 165, 213, 0.5);
 }
 .container-margin{
-  margin: 105px 10px;
+  margin-top: 90px;
+  /* margin: 105px 10px; */
   margin-left: 90px;
 }
 
 .glass-background {
-  background-color: rgba(255, 255, 255, 0.5); 
+  background-color: rgba(255, 255, 255, .5); 
   backdrop-filter: blur(10px); 
   box-shadow: var(--box-shadow);
 }
@@ -70,7 +70,50 @@ a{
   font-size: 150%;
   /* box-shadow: var(--box-shadow); */
 }
+.follow-btn{
+  border: none;
+  background-color: #23a6d5;
+  padding: 5px;
+  border-radius: 10px;
+  color: #FFFF;
+  font-weight: 600;
+  /* position: absolute;
+  right: 0; */
+  cursor: pointer;
 
+ 
+}
+.follow-btn:hover{
+  opacity: .7;
+}
+.publisher{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.publisher-details{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.published-date{
+  font-size:.6rem;
+  font-weight: 500;
+  color: #3a3a3a;
+}
+.avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: blueviolet;
+  background-image: linear-gradient(to top left, blueviolet, #23a6d5);
+  }
+
+.publisher-name{
+  font-size: 1rem;
+  font-weight: 600;
+  margin-left: 10px;
+}
 .btn-style{
   background-color: var(--btn-bg-color); /* Green */
   border-radius: 10px;
@@ -85,6 +128,30 @@ a{
   box-shadow: var(--box-shadow);
   transition: all .3s ease-out;
 }
+
+
+.post-title {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  margin: 10px 0;
+  color: #000;
+  text-decoration: none;
+  transition: all .30s ease-in;
+}
+
+.post-title:hover {
+  text-decoration: underline blueviolet;
+  background: linear-gradient(to right, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+     background-clip: text;
+    -webkit-background-clip: text;
+     color: transparent;
+}
+
+/* --------------------------------- */
+
+
+
 .member-btn{
   background: none;
   border: none;

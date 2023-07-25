@@ -21,7 +21,7 @@ export default DropdownMenu;
 const Wrapper = styled.div`
     /* background-color: white; */
     background-color: rgba(255, 255, 255, 0.5); 
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
     border-radius: 5px;
     position: absolute;
     top:    50px;

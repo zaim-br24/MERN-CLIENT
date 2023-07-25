@@ -1,9 +1,8 @@
 import React from "react"
 import { Outlet } from "react-router-dom"
-import styled from "styled-components"
-import { NavbarCompo, SideBar, Overly, Recommendation} from "../../components/index"
+import { Navbar, SmallSidebar, BigSidebar, Overly, Recommendation} from "../../components/index"
 import { Link } from "react-router-dom"
-
+import Wrapper from "../../assets/Styles/SharedLayoutWrapper"
 import {
   clipshotLight,
   watchLight,
@@ -18,43 +17,29 @@ export default function SharedLayout() {
 
   return (
     <Wrapper>
-       <NavbarCompo/>
-       <SideBar/>
+      <main className="dashboard">
+       <SmallSidebar/>
+       {/* <BigSidebar/> */}
        <Recommendation/>
 
 
-       {/* <SidebarCompo /> */}
+       <div>
+        
+          <Navbar/>
+            <div className="dashboard-page">
+              <Outlet/>
+            </div>
+        </div>
 
        {isOverlyOpen &&  <Overly>
           <Link className='create-post-btn' to="/create/clipshot"> <p>Create a Clipshot</p> <img className="icon" alt="clipshot" src={clipshotLight}></img></Link>
-          <Link className='create-post-btn' to='/create/watch'> <p>Post a Video</p> <img className="icon" alt="watch" src={watchLight}></img></Link>
+          <Link className='create-post-btn' to='/create/watch'> <p>Upload a Video</p> <img className="icon" alt="watch" src={watchLight}></img></Link>
           <Link className='create-post-btn' to="/create/redoo"> <p>Write a Redoo</p> <img className="icon" alt="redoo" src={redoosLight}></img></Link>
 
         </Overly>}
-      < Outlet/>
+      </main>
     </Wrapper>
   )
 }
 
 
-const Wrapper = styled.div`
-
-.create-post-btn{
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  outline: 1px solid  rgb(35, 165, 213);
-  border-radius: 10px;
-  margin: 0 5px;
-  p{
-    font-weight: 600;
-  }
-  :hover{
-    outline: 2px solid rgb(35, 165, 213);
-  }
-  img{
-    width: 40px;
-    margin: 10px auto;
-  }
-}
-`
