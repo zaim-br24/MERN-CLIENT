@@ -13,15 +13,17 @@ import { useAppContext } from "../../context/appContext";
 
 export default function SharedLayout() {
 
-  const {isOverlyOpen} = useAppContext()
+  const {isOverlyOpen, showSidebar} = useAppContext()
 
   return (
     <Wrapper>
       <main className="dashboard">
        <SmallSidebar/>
-       {/* <BigSidebar/> */}
        <Recommendation/>
-
+     
+       {
+        showSidebar &&   <BigSidebar/> 
+       }
 
        <div>
         

@@ -1,8 +1,8 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useRef, useEffect} from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faCaretDown, faArrowRightFromBracket,faGear, faBars} from '@fortawesome/free-solid-svg-icons'
-import { NavItemsCompo , LogoCompo, ButtonCompo, SideBar,DropdownMenu } from './index';
+import {LogoCompo, ButtonCompo,DropdownMenu } from './index';
 // import {Logout} from '../pages/index'
 import {searchIcon} from "../assets/icons/index"
 import { useAppContext } from '../context/appContext.js'
@@ -10,35 +10,14 @@ import { Link } from 'react-router-dom';
 
 
 export default function NavbarCompo() {
-  const {userRegistered, handelCloseMenu, handelOpenMenu,handelCloseDropdown,handelOpenDropdown, isDropdownOpen,isMenuOpen} = useAppContext()
+  const {user,logoutUser, userRegistered , isDropdownOpen,toggleSidebar,toggleDropdown,closeDropdownOverly} = useAppContext()
 
-  // const [isOpen, setIsOpen] = useState(false);
-  const [isRotate, setIsRotate] = useState(false);
   const dropdownRef = useRef(null)
 
 
-  const toggleDropdown = () => {
-    // setIsOpen(!isOpen);
-    if(isDropdownOpen){
-      handelCloseDropdown();
-    }else{
-      handelOpenDropdown();
-    }
-    setIsRotate(!isRotate);
-  };
-
-  const toggleMenu = ()=>{
-    if(isMenuOpen){
-      handelCloseMenu();
-    }else{
-      handelOpenMenu()
-    }
-  }
-
   const handelClickOutside = (event)=>{
     if(dropdownRef.current && !dropdownRef.current.contains(event.target)){
-      handelCloseDropdown();
-
+      closeDropdownOverly()
     }
   }
 
@@ -54,7 +33,7 @@ export default function NavbarCompo() {
        {/* <SideBar/> */}
        <div className='burger-menu'>
         <div className='burger-icon-container'>
-           <FontAwesomeIcon onClick={toggleMenu} className='burger-icon' icon={faBars} />
+           <FontAwesomeIcon onClick={toggleSidebar} className='burger-icon' icon={faBars} />
         </div>
         <LogoCompo />
        </div>
@@ -74,16 +53,15 @@ export default function NavbarCompo() {
       <div className='profile-container' onClick={toggleDropdown}>
         
           <FontAwesomeIcon className='icon' icon={faUser} />
-           <p className='user-profile-name'>Zaim</p>
+           <p className='user-profile-name'>{user.name}</p>
          
+            <button onClick={toggleDropdown}><FontAwesomeIcon className='icon' icon={faCaretDown} /></button>
 
-            <button onClick={toggleDropdown}><FontAwesomeIcon className={`icon ${isRotate && "rotate"}`} icon={faCaretDown} /></button>
-          
           {
           isDropdownOpen && < DropdownMenu>
              <Link to="/profile"> <FontAwesomeIcon icon={faUser} /> Profile</Link>
              <Link to="/settings"><FontAwesomeIcon icon={faGear} /> Settings</Link>
-             <Link to="/logout"> <FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout</Link>
+             <Link to="/" onClick={logoutUser}> <FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout</Link>
           </DropdownMenu>
           }
       </div>

@@ -4,7 +4,7 @@ import { RedooCard} from './index'
 
 export default function RedooCards() {
   return (
-    <Wrapper className=''>
+    <Wrapper>
         <RedooCard id="1"/>
         <RedooCard id="2"/>
         <RedooCard id="3"/>
@@ -19,7 +19,7 @@ export default function RedooCards() {
 
 const Wrapper = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(285px, 2fr));
     grid-gap: 10px;
     margin: 25px auto;
 `

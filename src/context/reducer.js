@@ -7,57 +7,44 @@ import {
   LOGIN_USER_BEGIN,
   LOGIN_USER_SUCCESS, 
   LOGIN_USER_ERROR,
-  CLOSE_MENU,
-  OPEN_MENU,
-  CLOSE_DROPMENU,
-  OPEN_DROPDOWN,
-  OPEN_OVERLY,
-  CLOSE_OVERLY,
+  TOGGLE_DROPDOWN,
+  TOGGLE_OVERLY,
+  LOGOUT_USER,
+  TOGGLE_SIDEBAR,
+  CLOSE_DROPDOWN_OVERLY
 
 } from './actions'
+import { initialState } from './appContext'
 
 export default function reducer(state , action) {
-  if(action.type === CLOSE_MENU){
+  if(action.type ===TOGGLE_SIDEBAR){
     return{
       ...state,
-      isMenuOpen: false
+      showSidebar: !state.showSidebar
 
     }
   }
-  if(action.type === OPEN_MENU){
+  if(action.type === TOGGLE_DROPDOWN){
     return{
       ...state,
-      isMenuOpen: true
+      isDropdownOpen: !state.isDropdownOpen
     }
   }
-  if(action.type === OPEN_DROPDOWN){
+  if(action.type === TOGGLE_OVERLY){
     return{
       ...state,
-      isDropdownOpen: true
-    }
-  }
-  if(action.type === CLOSE_DROPMENU){
-    return{
-      ...state,
-      isDropdownOpen: false
+      isOverlyOpen: !state.isOverlyOpen
 
     }
   }
-  if(action.type === CLOSE_OVERLY){
+  if(action.type === CLOSE_DROPDOWN_OVERLY){
     return{
       ...state,
-      isOverlyOpen: false
-
+      isOverlyOpen: false,
+      isDropdownOpen: false,
+      showSidebar:false
     }
   }
-  if(action.type === OPEN_OVERLY){
-    return{
-      ...state,
-      isOverlyOpen: true
-
-    }
-  }
-
    if(action.type === DISPLAY_ALERT){
       return {...state,
         showAlert:true,
@@ -117,5 +104,15 @@ export default function reducer(state , action) {
      alertText: action.payload.msg,
    }
  }
+ if(action.type = LOGOUT_USER){
+  return{
+    ...initialState,
+    user: null,
+    token: null,
+    userLocation:'', 
+    userRegistered:false,
+  }
+ }
+
   
 }

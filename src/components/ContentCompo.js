@@ -24,7 +24,7 @@ export default function ContentCompo() {
 
 const Wrapper = styled.div` 
     /* max-width: 1400px; */
-    margin-top: 30px;
+    /* margin-top: 30px; */
     .category-title{
       margin: 30px 0;
       width: 300px;

@@ -1,12 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import {NavbarCompo, MainContentCompo} from '../components/index'
+import {MainContentCompo} from '../components/index'
 
 export default function Landing() {
   return (
-    <Wrapper>
-      {/* <NavbarCompo /> */}
+    <Wrapper className='nasted-box'>
       <MainContentCompo />
     </Wrapper>
   )
@@ -14,12 +13,6 @@ export default function Landing() {
 
 
 const Wrapper = styled.div`
-  /* margin: 70px auto 10px ; */
-  position: absolute;
-  top: 40px;
-  left: 80px;
-  right: 0;
-  padding: 10px;
   @media screen and (max-width : 992px){
     left:  0;    
     }

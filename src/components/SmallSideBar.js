@@ -1,10 +1,11 @@
 import React, {useRef, useEffect} from 'react'
-import styled from 'styled-components'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faHouse, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { useAppContext } from "../context/appContext";
+import Wrapper from '../assets/Styles/SmallSidebarWrapper'
+
 import {
   homeLight,
   bookmarkLight,
@@ -14,21 +15,20 @@ import {
   redoosLight,
 } from "../assets/icons/index"
 
-import { SideBarIcon } from './index'
+import NavLinks from './NavLinks';
+// import {Icon} from './index'
 
 
 library.add(far);
 
 export default function SmallSidebar() {
 
-
-  const {isMenuOpen, handelCloseMenu, handleOpenOverly} = useAppContext()
+  const {isMenuOpen, toggleOverly,closeDropdownOverly} = useAppContext()
   const menuRef = useRef(null)
-
 
   const handelClickOutside = (event)=>{
     if(menuRef.current && !menuRef.current.contains(event.target)){
-      handelCloseMenu();
+      closeDropdownOverly();
 
     }
   }
@@ -43,13 +43,9 @@ export default function SmallSidebar() {
   return (
     <Wrapper  isOpened={isMenuOpen}>
       <div className='sidebar-container'>
-      <SideBarIcon id={1} path='/' src={homeLight}/>
-      <SideBarIcon id={2} path='/redoos' src={redoosLight}/>
-      <SideBarIcon id={3} path='/clipshots' src={clipshotLight}/>
-      <SideBarIcon id={4} path='/watch' src={watchLight}/>
-      <SideBarIcon id={5} src={addSquareLight} handleClick={handleOpenOverly}/>
-      <SideBarIcon id={6} path='/' src={bookmarkLight}/>
-
+      <div className='content'>
+          <NavLinks toggleOverly={toggleOverly}/>
+        </div>
       </div>
 
     </Wrapper>
@@ -57,30 +53,26 @@ export default function SmallSidebar() {
 
 }
 
-const Wrapper = styled.div`
-   /* width: 50px; */
-   background-color: orange;
-   width: 100%;
-  .sidebar-container{
-    position: fixed;
-    left: 0;
-    top:54px;
-    bottom: 0;
-    /* width: 220px; */
-   box-shadow: var(--box-shadow);
+// const Wrapper = styled.div`
+//    background-color: orange;
+//    width: 100%;
+//   .sidebar-container{
+//     position: fixed;
+//     left: 0;
+//     top:54px;
+//     bottom: 0;
+//    box-shadow: var(--box-shadow);
 
-    border: 1px soild black;
-    background-color: rgba(255, 255, 255, 1); 
-    /* backdrop-filter: blur(10px);     */
-    display: flex;
-    flex-direction: column;
-    padding:10px;
-    z-index: 300;
-    transition: all .3s ease-in-out;
-    /* display: ${props => props.isOpened? 'block' : "none" }; */
+//     border: 1px soild black;
+//     background-color: rgba(255, 255, 255, 1); 
+//     display: flex;
+//     flex-direction: column;
+//     padding:10px;
+//     z-index: 300;
+//     transition: all .3s ease-in-out;
 
-    @media screen and (max-width : 992px){
-      display: none;
-     }
-    }
-`
+//     @media screen and (max-width : 992px){
+//       display: none;
+//      }
+//     }
+// `

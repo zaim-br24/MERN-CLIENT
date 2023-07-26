@@ -6,9 +6,11 @@ import {faShare} from '@fortawesome/free-solid-svg-icons';
 import {bookmarkLight} from '../assets/icons/index'
 import { Link } from 'react-router-dom';
 
-export default function RedooCard({id}) {
+export default function RedooCard({id, src}) {
   return (
-     <Wrapper className="post-card">
+     <Wrapper>
+      <img className='bg-img' src='https://plus.unsplash.com/premium_photo-1675621475729-edf2cf9076af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80' alt='image'/>
+       <div className="post-card">
        <div className='publisher'>
        <div className='publisher-details'>
             <div className="avatar"></div>
@@ -22,22 +24,31 @@ export default function RedooCard({id}) {
             <span><FontAwesomeIcon icon={faComment} />8</span>
             <span  ><Link to="/"><img className='icon' src={bookmarkLight}></img> </Link></span>
         </div>
+        </div>
     </Wrapper>
   )
 }
 
 
 const Wrapper = styled.div`
-  min-width: 350px;
-  /* background: #F2F3F4; */
-  background-color: rgba(255, 255, 255, 1); 
-  /* backdrop-filter: blur(10px);    */
-  /* border: 1px solid rgb(84 90 106); */
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  padding: 10px;
 
+
+.post-card{
+  padding: 10px;
+  background-color: white;
+  min-width: 300px;
+  border-radius: 10px;
+}
+.bg-img{
+  object-fit: cover;
+  height:80px ;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+}
 
   a{
     font-weight: 600;
@@ -48,10 +59,10 @@ const Wrapper = styled.div`
     color: black;
   }
 
-
 .datetime {
   font-size: 12px;
   color: rgb(168 179 207);
+  color: white;
   margin: 3px 0;
 }
 

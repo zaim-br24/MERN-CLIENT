@@ -3,8 +3,10 @@ import React from 'react'
 // import { faUser } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useAppContext } from '../../context/appContext'
 
 export default function Profile() {
+  const {user} = useAppContext()
   return (
     <Wrapper>
       <div className='glass-background box profile'>
@@ -16,7 +18,7 @@ export default function Profile() {
           <div className='user-image'></div>
 
           <div className='user-info'>
-            <p className='user-name'>Zaim br</p>
+            <p className='user-name'>{user.name}</p>
             <p className='personal-account'>(Your personal account)</p>
           </div>
         </div>

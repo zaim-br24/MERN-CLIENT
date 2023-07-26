@@ -7,6 +7,7 @@ import { CommentInput } from '../../components/index';
 export default function RedoosSinglePage() {
   return (
     <Wrapper className='container-margin'>
+      <div className='content'>
         <div className='redoo-post-conatainer'>
             <div className='publisher'>
                 <div className='publisher-details'>
@@ -44,6 +45,7 @@ export default function RedoosSinglePage() {
         </div> 
 
         
+        </div>
         <div className='right-side'>
         publisher side
         </div>

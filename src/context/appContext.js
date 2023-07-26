@@ -9,12 +9,11 @@ import {
      LOGIN_USER_BEGIN,
      LOGIN_USER_ERROR,
      LOGIN_USER_SUCCESS,
-     CLOSE_MENU,
-     OPEN_MENU,
-     OPEN_DROPDOWN,
-     CLOSE_DROPMENU,
-     CLOSE_OVERLY,
-     OPEN_OVERLY
+     TOGGLE_DROPDOWN,
+     TOGGLE_OVERLY,
+     LOGOUT_USER,
+     TOGGLE_SIDEBAR,
+     CLOSE_DROPDOWN_OVERLY
 
     } from './actions'
 import reducer from "./reducer";
@@ -34,8 +33,8 @@ const initialState = {
     userLocation: location || '', 
     userRegistered: user && true,
     isDropdownOpen: false,
-    isMenuOpen: false,
     isOverlyOpen: false,
+    showSidebar: false,
 
 }
 
@@ -60,7 +59,7 @@ const AppProvider = ({children})=>{
         localStorage.setItem('location', location)
 
     }
-    const removeUserFromLocalStorag= ({user, token, location})=>{
+    const removeUserFromLocalStorag = ({user, token, location})=>{
         localStorage.removeItem('user')
         localStorage.removeItem('token')
         localStorage.removeItem('location')
@@ -131,26 +130,24 @@ const AppProvider = ({children})=>{
     }
     // --------- dropdown menu
     
-    const handelCloseMenu = ()=>{
-        dispatch({type: CLOSE_MENU})
+    const toggleSidebar= ()=>{
+        dispatch({type: TOGGLE_SIDEBAR})
+      }
+    const toggleDropdown = ()=>{
+        dispatch({type: TOGGLE_DROPDOWN})
     }
-    const handelOpenMenu = ()=>{
-        dispatch({type: OPEN_MENU})
+    const toggleOverly = ()=>{
+        dispatch({type: TOGGLE_OVERLY})
     }
-
-    const handelCloseDropdown = ()=>{
-        dispatch({type:CLOSE_DROPMENU})
+    const closeDropdownOverly = ()=> {
+        dispatch({type: CLOSE_DROPDOWN_OVERLY})
     }
-    const handelOpenDropdown= ()=>{
-        dispatch({type: OPEN_DROPDOWN})
+    const logoutUser = ()=> {
+        dispatch({type: LOGOUT_USER})
     }
-
-    const handleCloseOverly = ()=>{
-        dispatch({type: CLOSE_OVERLY})
-    }
-    const handleOpenOverly = ()=>{
-        dispatch({type: OPEN_OVERLY})
-    }
+    // const toggleSidebar = ()=> {
+    //     dispatch({type: SHOW_SIDEBAR})
+    // }
     // const logoutUser = async ()=>{
     //     try {
     //         removeUserFromLocalStorag({user, token, location})
@@ -175,12 +172,11 @@ const AppProvider = ({children})=>{
             displayAlert,
             registerUser,             
             loginUser, 
-            handelCloseMenu, 
-            handelOpenMenu, 
-            handelCloseDropdown,
-            handelOpenDropdown,
-            handleOpenOverly,
-            handleCloseOverly
+            toggleDropdown,
+            toggleOverly,
+            logoutUser,
+            toggleSidebar,
+            closeDropdownOverly
             }}>
 
             {children}
@@ -192,4 +188,4 @@ export const useAppContext = ()=> {
     return useContext(AppContext)
 }
 
-export {AppProvider}
+export {AppProvider, initialState}

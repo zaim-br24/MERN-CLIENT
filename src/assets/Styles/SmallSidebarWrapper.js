@@ -1,88 +1,47 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.aside`
-  @media (min-width: 992px) {
-    display: none;
+  @media screen and (max-width : 992px){
+      display: none;
   }
   .sidebar-container{
+    width: 65px;
     position: fixed;
-    inset: 0;
+    left: 0;
+    top:54px;
     bottom: 0;
+    box-shadow: var(--box-shadow);
     border: 1px soild black;
-    background-color: rgba(255, 255, 255, 1);  
+    background-color: rgba(255, 255, 255, 1); 
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     padding:10px;
-    z-index: -1;
+    z-index: 300;
     transition: all .3s ease-in-out;
-
-    }
-  /* .sidebar-container {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column;
-    z-index: -1;
-    opacity: 0;
-    transition: var(--transition);
-  } */
+  }
   .show-sidebar {
     z-index: 99;
     opacity: 1;
   }
-  /* .content {
-    background: var(--white);
-    width: var(--fluid-width);
-    height: 95vh;
-    border-radius: var(--borderRadius);
-    padding: 4rem 2rem;
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: transparent;
-    border-color: transparent;
-    font-size: 2rem;
-    color: var(--red-dark);
-    cursor: pointer;
-  }
   .nav-links {
-    padding-top: 2rem;
     display: flex;
     flex-direction: column;
   }
   .nav-link {
-    display: flex;
-    align-items: center;
-    color: var(--grey-500);
-    padding: 1rem 0;
+    padding: 1rem;
+    border-radius: 10px;
     text-transform: capitalize;
-    transition: var(--transition);
+    :hover{
+      background-color: whitesmoke; 
+    }
   }
-  .nav-link:hover {
-    color: var(--grey-900);
-  }
-  .nav-link:hover .icon {
-    color: var(--primary-500);
-  }
+
   .icon {
-    font-size: 1.5rem;
-    margin-right: 1rem;
-    display: grid;
-    place-items: center;
-    transition: var(--transition);
+    width:30px;
   }
   .active {
-    color: var(--grey-900);
+    color: orange;
   }
-  .active .icon {
-    color: var(--primary-500);
-  } */
+  
 `
 export default Wrapper

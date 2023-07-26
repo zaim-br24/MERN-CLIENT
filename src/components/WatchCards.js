@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 export default function WatchCards() {
   return (
-    <Wrapper>
+    <Wrapper >
     <WatchCard id="1"/>
     <WatchCard id="2"/>
     <WatchCard id="3"/>
@@ -19,9 +19,14 @@ export default function WatchCards() {
   )
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div` 
     border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax( 260px, 1fr));
     grid-gap: 10px;
+
+    @media screen and (max-width: 992px){
+      margin: auto 0;
+      
+    }
 `

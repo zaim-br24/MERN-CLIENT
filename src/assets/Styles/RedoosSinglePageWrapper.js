@@ -12,6 +12,10 @@ const Wrapper = styled.div`
         min-width: 100%;
         margin: 70px auto;
     }
+    .content{
+        display: flex;
+        flex-direction: column;
+    }
     .redoo-post-conatainer{
         max-width:  700px;
         display: flex;
