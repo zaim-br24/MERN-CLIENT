@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   font-weight: 700;
 }
 
-.form {
+.register-form {
   margin-top: 1.5rem;
 }
 

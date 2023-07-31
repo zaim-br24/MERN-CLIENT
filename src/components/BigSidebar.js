@@ -13,13 +13,13 @@ import NavLinks from './NavLinks';
 
 
 const BigSidebar = () => {
-  const {toggleSidebar, toggleOverly } = useAppContext()
+  const { toggleOverly } = useAppContext()
   return (
     <Wrapper>
       <div className='sidebar-container' >
          <div className='close-btn'> <GrClose/> </div>
         <div className='content'>
-          <NavLinks insertText={true}/>
+          <NavLinks insertText={true} toggleOverly={toggleOverly}/>
         </div>
       </div>
       

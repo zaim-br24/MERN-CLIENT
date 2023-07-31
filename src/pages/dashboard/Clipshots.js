@@ -10,5 +10,5 @@ export default function Clipshots() {
 }
 
 const Wrapper = styled.div`
-  /* margin-top: 65px; */
+  margin-top: 65px;
   `

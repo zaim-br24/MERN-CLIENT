@@ -8,7 +8,8 @@ import Watch from "./Watch";
 import ClipshotSinglePage from "./ClipshotSinglePage";
 import WatchSinglePage from "./WatchSinglePage"
 import RedoosSinglePage from "./RedoosSinglePage"
-
+import CreatePost from "./CreatePost";
+import SavedList from "./SavedList";
 
 export {
     AddPost,
@@ -19,5 +20,7 @@ export {
     Clipshots,
     ClipshotSinglePage,
     WatchSinglePage,
-    RedoosSinglePage
+    RedoosSinglePage,
+    CreatePost,
+    SavedList
 }

@@ -60,7 +60,7 @@ useEffect(()=>{
       <div class="form-container">
          <h1>{!values.isMember ? <p class="title">Register</p> : <p class="title">Login</p>} </h1>   
          {showAlert && <Alert/>}
-            <form class="form" onSubmit={handelSubmit}>
+            <form class="register-form" onSubmit={handelSubmit}>
             {
             values.isMember ||
               <Input 

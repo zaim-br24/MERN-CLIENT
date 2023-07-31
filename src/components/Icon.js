@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function SideBarIcon({icon}) {
+const Icon = ({icon}) =>{
 
   return (
     <Wrapper >
-        <img className="icon" src={icon}/>
+        <img className="icon" alt='img' src={icon}/>
     </Wrapper>
   )
 }
@@ -16,8 +16,6 @@ const Wrapper = styled.div`
       margin: 5px 0 ;
       border-radius: 10px;
       transition: all .2s ease-in;
-      display: flex;
-      align-items: center;
       cursor: pointer;
       :hover{
         background-color:  rgba(35, 165, 213, 0.5);
@@ -32,3 +30,4 @@ const Wrapper = styled.div`
       
 
 `
+export default Icon

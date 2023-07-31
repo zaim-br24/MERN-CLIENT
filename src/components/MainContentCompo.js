@@ -19,7 +19,7 @@ const Main = styled.div`
   /*  */
   padding: 5px;
   
-  @media screen and (max-width : 900px){
+  @media screen and (max-width : 992px){
        margin-top: 50px;
      }
 

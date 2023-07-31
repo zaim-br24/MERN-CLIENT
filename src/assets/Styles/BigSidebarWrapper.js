@@ -1,16 +1,18 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.aside`
+    display: none;
     max-height: 100vh;
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    z-index: 9999;
+    z-index: 999;
     background-color:  rgba(0, 0, 0, 0.5);
     padding: 10px;
-
+    @media (max-width: 992px) {
+      display: block;
     .sidebar-container {
       padding: 10px;
       border-radius: 10px;
@@ -24,9 +26,9 @@ const Wrapper = styled.aside`
       align-items: center;
       justify-content: center;
     }
-    .content{
-      display: flex;
-      flex-direction: column;
+    .content {
+      position: sticky;
+      top: 0;
     }
     .close-btn{
       font-size: 1.5rem;
@@ -36,7 +38,6 @@ const Wrapper = styled.aside`
       left: 10px;
     }
     .nav-links {
-      padding-top: 2rem;
       display: flex;
       flex-direction: column;
     }
@@ -44,23 +45,23 @@ const Wrapper = styled.aside`
       display: flex;
       align-items: center;
       color: black;
-      padding: 1rem 0;
-      /* padding-left: 2.5rem; */
+      padding: 1rem 2rem ;
+      border-radius: 10px;
+      margin: 5px 0;
       text-transform: capitalize;
       transition: all .3s ease-in;
+      :hover{
+        background-color: whitesmoke;
+      }
     }
+    .text{
+      margin-left: 10px;
+    }   
     .nav-link:hover {
       color: lightgray;
     }
-    .nav-link:hover .icon {
-      color: black;
-    }
     .icon {
-      font-size: 1.5rem;
-      margin-right: 1rem;
-      display: grid;
-      place-items: center;
-      transition: all .3s ease-in;
+     width:30px;
     }
     .active {
       color: var(--grey-900);
@@ -68,31 +69,6 @@ const Wrapper = styled.aside`
     .active .icon {
       color: black;
     }
-
-  /* @media (max-width: 992px) {
-
-    .sidebar-container {
-      background: var(--white);
-      min-height: 100vh;
-      height: 100%;
-      width: 250px;
-      margin-left: -250px;
-      transition: var(--transition);
-    }
-    .content {
-      position: sticky;
-      top: 0;
-    }
-    .show-sidebar {
-      margin-left: 0;
-    }
-    header {
-      height: 6rem;
-      display: flex;
-      align-items: center;
-      padding-left: 2.5rem;
-    }
-    
-  } */
+  }
 `
 export default Wrapper

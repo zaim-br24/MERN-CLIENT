@@ -14,7 +14,6 @@ export default function Redoos() {
 const Wrapper = styled.div`
      margin-top: 40px;
      @media screen and (max-width : 992px){
-      margin: 0;
-      margin-top: 70px;
+        margin-top: 70px;
      }
 `

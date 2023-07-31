@@ -1,8 +1,9 @@
 import React from 'react'
-import links from '../utils/links'
 import { NavLink } from 'react-router-dom'
+import links from '../utils/links'
 
 export default function NavLinks({toggleOverly, insertText}) {
+  
   return (
     <div className='nav-links'>
     {links.map((link) => {
@@ -11,15 +12,15 @@ export default function NavLinks({toggleOverly, insertText}) {
       return (
         <NavLink
           to={path}
+          
           className={({ isActive }) =>
             isActive ? 'nav-link active' : 'nav-link'
           }
           key={id}
          onClick={overly && toggleOverly}
-          
         >
           <span className='icon'>{icon}</span>
-          {insertText && text}
+          {insertText && <p className='text'>{text}</p> }
         </NavLink>
       )
     })}     

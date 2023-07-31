@@ -61,7 +61,7 @@ export default function NavbarCompo() {
           isDropdownOpen && < DropdownMenu>
              <Link to="/profile"> <FontAwesomeIcon icon={faUser} /> Profile</Link>
              <Link to="/settings"><FontAwesomeIcon icon={faGear} /> Settings</Link>
-             <Link to="/" onClick={logoutUser}> <FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout</Link>
+             <Link to="/" onClick={() => logoutUser()}> <FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout</Link>
           </DropdownMenu>
           }
       </div>

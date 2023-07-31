@@ -7,9 +7,9 @@ const Wrapper = styled.section`
     grid-template-columns: 1fr;
   }
   .dashboard-page {
-    width: 90vw;
+    width: 100vw;
     margin: 0 auto;
-    padding: 2rem 0;
+    /* padding: 2rem 0; */
   }
   
   .create-post-btn{

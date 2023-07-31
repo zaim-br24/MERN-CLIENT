@@ -20,6 +20,7 @@ import Icon from "./Icon";
 import Overly from "./Overly";
 import CommentsBox from "./CommentsBox";
 import CommentInput from "./CommentInput";
+import FormRow from "./FormRow";
 
 
 export {
@@ -43,5 +44,6 @@ export {
     Icon,
     Overly,
     CommentsBox,
-    CommentInput
+    CommentInput,
+    FormRow
 }

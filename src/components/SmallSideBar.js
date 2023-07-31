@@ -53,26 +53,4 @@ export default function SmallSidebar() {
 
 }
 
-// const Wrapper = styled.div`
-//    background-color: orange;
-//    width: 100%;
-//   .sidebar-container{
-//     position: fixed;
-//     left: 0;
-//     top:54px;
-//     bottom: 0;
-//    box-shadow: var(--box-shadow);
 
-//     border: 1px soild black;
-//     background-color: rgba(255, 255, 255, 1); 
-//     display: flex;
-//     flex-direction: column;
-//     padding:10px;
-//     z-index: 300;
-//     transition: all .3s ease-in-out;
-
-//     @media screen and (max-width : 992px){
-//       display: none;
-//      }
-//     }
-// `

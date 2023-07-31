@@ -1,6 +1,5 @@
 import React, {useState} from "react"
 import styled from "styled-components"
-import { Input, ButtonCompo} from "../../components/index"
 
 export default function AddPost() {
   

@@ -13,7 +13,10 @@ import {
      TOGGLE_OVERLY,
      LOGOUT_USER,
      TOGGLE_SIDEBAR,
-     CLOSE_DROPDOWN_OVERLY
+     CLOSE_DROPDOWN_OVERLY,
+     UPDATE_USER_BEGIN,
+     UPDATE_USER_SUCCESS,
+     UPDATE_USER_ERROR,
 
     } from './actions'
 import reducer from "./reducer";
@@ -23,18 +26,20 @@ const user = localStorage.getItem("user")
 const token = localStorage.getItem("token")
 const location = localStorage.getItem("location")
 
+
 const initialState = {
     isLoading: false,
     showAlert: false,
     alertText:'',
     alertType:'',
-    user:user? JSON.parse(user) : null,
+    user: user? JSON.parse(user) : null,
     token: token,
     userLocation: location || '', 
     userRegistered: user && true,
     isDropdownOpen: false,
     isOverlyOpen: false,
     showSidebar: false,
+    test : false
 
 }
 
@@ -42,6 +47,34 @@ const AppContext = React.createContext()
 
 const AppProvider = ({children})=>{
     const [state , dispatch] = useReducer(reducer, initialState)
+    // axios
+    const authFetch = axios.create({baseURL: '/api/v1', headers: {
+        Authorization: `Bearer ${state.token}`,
+      },})
+
+    //   response interceptor (does not work NEED TO BE FIXED)
+    authFetch.interceptors.request.use(
+        (config) => {
+        // config.headers.common['Authorization'] = `Bearer ${state.token}`
+        return config
+        },
+        (error) => {
+        return Promise.reject(error)
+        }
+    )
+    // response interceptor
+    authFetch.interceptors.response.use(
+        (response) => {
+        return response
+        },
+        (error) => {
+        if (error.response.status === 401) {
+            console.log('AUTH ERROR')
+        }
+        return Promise.reject(error)
+        }
+    )
+
 
     const displayAlert = ()=>{
         dispatch({type:DISPLAY_ALERT})
@@ -53,13 +86,13 @@ const AppProvider = ({children})=>{
             dispatch({type:CLEAR_ALERT})
         },3000)
     }
-    const addUserToLocalStorag= ({user, token, location})=>{
+    const addUserToLocalStorage= ({user, token, location})=>{
         localStorage.setItem('user', JSON.stringify(user))
         localStorage.setItem('token', token)
         localStorage.setItem('location', location)
 
     }
-    const removeUserFromLocalStorag = ({user, token, location})=>{
+    const removeUserFromLocalStorag = ()=>{
         localStorage.removeItem('user')
         localStorage.removeItem('token')
         localStorage.removeItem('location')
@@ -71,7 +104,6 @@ const AppProvider = ({children})=>{
         try {
             const response = await axios.post('/api/v1/auth/register', currentUser)
             const {user, token , location} = response.data
-            console.log(response)
             dispatch({
                 type: REGISTER_USER_SUCCESS,
                 payload:{
@@ -81,10 +113,9 @@ const AppProvider = ({children})=>{
                 }
             })
         // // localStorage
-        addUserToLocalStorag({user, token, location})
+        addUserToLocalStorage({user, token, location})
 
         } catch (error) {
-            displayAlert()
             dispatch({
                 type: REGISTER_USER_ERROR,
                 payload:{
@@ -95,7 +126,6 @@ const AppProvider = ({children})=>{
             
         }
         clearAlert()
-        console.log(currentUser)
     }
     const loginUser = async (currentUser)=>{
         dispatch({type: LOGIN_USER_BEGIN})
@@ -113,10 +143,9 @@ const AppProvider = ({children})=>{
                 }
             })
         // // localStorage
-        addUserToLocalStorag({user, token, location})
+        addUserToLocalStorage({user, token, location})
 
         } catch (error) {
-            displayAlert()
             dispatch({
                 type: LOGIN_USER_ERROR,
                 payload:{
@@ -126,7 +155,39 @@ const AppProvider = ({children})=>{
             })
         }
         clearAlert()
-        console.log(currentUser)
+    }
+
+    const updateUser = async (currentUser) => {
+        
+        dispatch({ type: UPDATE_USER_BEGIN })
+  
+        try {
+          const { data } = await authFetch.patch('/auth/updateUser', currentUser)
+          // no token
+          const { user, location, token } = data
+      
+          dispatch({
+            type: UPDATE_USER_SUCCESS,
+            payload: { user, location, token },
+          })
+      
+          addUserToLocalStorage({ user, location, token })
+        } catch (error) {
+            if(error.response.status !== 401){
+                dispatch({
+                    type: UPDATE_USER_ERROR,
+                    payload: { msg: error.response.data.msg },
+                })
+            }
+         
+        }
+        clearAlert()
+      }  
+
+    const logoutUser = ()=> {
+        dispatch({type:LOGOUT_USER})
+        removeUserFromLocalStorag()
+        
     }
     // --------- dropdown menu
     
@@ -142,29 +203,7 @@ const AppProvider = ({children})=>{
     const closeDropdownOverly = ()=> {
         dispatch({type: CLOSE_DROPDOWN_OVERLY})
     }
-    const logoutUser = ()=> {
-        dispatch({type: LOGOUT_USER})
-    }
-    // const toggleSidebar = ()=> {
-    //     dispatch({type: SHOW_SIDEBAR})
-    // }
-    // const logoutUser = async ()=>{
-    //     try {
-    //         removeUserFromLocalStorag({user, token, location})
-    //           // Call the logout API endpoint
-    //        const response = await axios.post('/api/v1/auth//logout', { 
-    //         token: localStorage.getItem('token')
-    //      }, {
-    //           headers: {
-    //             Authorization: `${localStorage.getItem('token')}`,
-    //           },
-    //           body: JSON.stringify({ token: localStorage.getItem('token') }),
-    //         })
-    //         // Clear the local storage or state
-    //     } catch (error) {
-    //         console.error('Error logging out:', error);
-    //     }
-    // }
+    
 
     return(
         <AppContext.Provider value={{
@@ -176,7 +215,8 @@ const AppProvider = ({children})=>{
             toggleOverly,
             logoutUser,
             toggleSidebar,
-            closeDropdownOverly
+            closeDropdownOverly,
+            updateUser
             }}>
 
             {children}
