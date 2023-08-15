@@ -1,8 +1,14 @@
-import React from 'react'
+import React ,{useEffect} from 'react'
 import { WatchCards } from '../../components'
 import styled from 'styled-components'
+import { useAppContext } from "../../context/appContext";
 
 export default function Watch() {
+  const  {displayReommendations} = useAppContext()
+
+  useEffect(()=>{
+    displayReommendations()
+  },[])
   return (
     <Wrapper className='nasted-box'>
         <WatchCards/>

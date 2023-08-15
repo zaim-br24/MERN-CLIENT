@@ -38,7 +38,6 @@ const handelSubmit = (e)=> {
   }
   const currentUser = {email, name, password}
  
-  console.log(currentUser)
 
   if(isMember){
     loginUser(currentUser)

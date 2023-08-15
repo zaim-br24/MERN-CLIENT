@@ -21,7 +21,7 @@ import Overly from "./Overly";
 import CommentsBox from "./CommentsBox";
 import CommentInput from "./CommentInput";
 import FormRow from "./FormRow";
-
+import VideoContainer from "./VideoContainer";
 
 export {
     Navbar,
@@ -45,5 +45,7 @@ export {
     Overly,
     CommentsBox,
     CommentInput,
-    FormRow
+    FormRow,
+    VideoContainer
+
 }

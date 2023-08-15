@@ -1,14 +1,6 @@
 import {GrClose} from 'react-icons/gr'
 import { useAppContext } from '../context/appContext'
 import Wrapper from '../assets/Styles/BigSidebarWrapper'
-import {
-  homeLight,
-  bookmarkLight,
-  addSquareLight, 
-  clipshotLight,
-  watchLight,
-  redoosLight,
-} from "../assets/icons/index"
 import NavLinks from './NavLinks';
 
 

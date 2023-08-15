@@ -15,6 +15,8 @@ import {
   UPDATE_USER_BEGIN,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
+  HIDE_RECOMMENDATIONS,
+  DISPLAY_RECOMMENDATIONS
 
 } from './actions'
 import { initialState } from './appContext'
@@ -148,6 +150,12 @@ if (action.type === UPDATE_USER_ERROR) {
     alertType: 'danger',
     alertText: action.payload.msg,
   }
+}
+if(action.type === HIDE_RECOMMENDATIONS){
+  return{...state, showRecommendations: false}
+}
+if(action.type === DISPLAY_RECOMMENDATIONS){
+  return{...state, showRecommendations: true}
 }
   
 }

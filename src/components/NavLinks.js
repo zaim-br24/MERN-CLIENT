@@ -7,7 +7,7 @@ export default function NavLinks({toggleOverly, insertText}) {
   return (
     <div className='nav-links'>
     {links.map((link) => {
-      const { text, path, id, icon, overly } = link
+      const { text, path, id, icon, overly, showRecommendation } = link
 
       return (
         <NavLink
@@ -17,8 +17,7 @@ export default function NavLinks({toggleOverly, insertText}) {
             isActive ? 'nav-link active' : 'nav-link'
           }
           key={id}
-         onClick={overly && toggleOverly}
-        >
+         onClick={overly && toggleOverly} >
           <span className='icon'>{icon}</span>
           {insertText && <p className='text'>{text}</p> }
         </NavLink>

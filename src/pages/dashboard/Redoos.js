@@ -1,7 +1,13 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { RedooCards } from '../../components'
 import styled from 'styled-components'
+import { useAppContext } from "../../context/appContext";
+
 export default function Redoos() {
+  const  {displayReommendations} = useAppContext()
+  useEffect(()=>{
+    displayReommendations()
+  },[])
   return (
     <Wrapper className='nasted-box'>
       <RedooCards/>

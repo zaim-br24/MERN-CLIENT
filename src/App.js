@@ -20,19 +20,21 @@ function App() {
               </ProtectedRoute>} >
               <Route index element={<Home />} />
               <Route path="profile" element={<Profile />} />
-              <Route path="create" element={<CreatePost />} />
               <Route path="settings" element={<Settings />} />
               <Route path="redoos" element={<Redoos />} />
               <Route path="watch" element={<Watch />} />
               <Route path="clipshots" element={<Clipshots />} />
               <Route path="saved-list" element={<SavedList />} />
 
+              {/* upload routes */}
+              <Route path="upload/clipshot" element={<CreatePost />} />
+              <Route path="upload/video" element={<CreatePost />} />
+              <Route path="upload/redoo" element={<CreatePost />} />
+
               
               <Route path="watch/:id" element={<WatchSinglePage />} />
               <Route path="clipshot/:id" element={<ClipshotSinglePage />} />
-              <Route path="redoo/:id" element={<RedoosSinglePage />} />
-
-
+              <Route path="redoos/:id" element={<RedoosSinglePage />} />
 
               </Route>
               {!userRegistered && <Route path="/landing" element={<Landing />} />}

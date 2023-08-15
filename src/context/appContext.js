@@ -17,6 +17,8 @@ import {
      UPDATE_USER_BEGIN,
      UPDATE_USER_SUCCESS,
      UPDATE_USER_ERROR,
+     HIDE_RECOMMENDATIONS,
+     DISPLAY_RECOMMENDATIONS
 
     } from './actions'
 import reducer from "./reducer";
@@ -39,7 +41,8 @@ const initialState = {
     isDropdownOpen: false,
     isOverlyOpen: false,
     showSidebar: false,
-    test : false
+    test : false,
+    showRecommendations:true
 
 }
 
@@ -189,6 +192,15 @@ const AppProvider = ({children})=>{
         removeUserFromLocalStorag()
         
     }
+
+    const hideReommendations = ()=>{
+        dispatch({type: HIDE_RECOMMENDATIONS})
+      
+    }
+    const displayReommendations = ()=>{
+        dispatch({type: DISPLAY_RECOMMENDATIONS})
+
+    }
     // --------- dropdown menu
     
     const toggleSidebar= ()=>{
@@ -216,7 +228,9 @@ const AppProvider = ({children})=>{
             logoutUser,
             toggleSidebar,
             closeDropdownOverly,
-            updateUser
+            updateUser,
+            hideReommendations,
+            displayReommendations
             }}>
 
             {children}

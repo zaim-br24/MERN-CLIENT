@@ -18,7 +18,7 @@ export default function RedooCard({id, src}) {
       </div>
       <button className='follow-btn'>follow</button>
       </div>
-        <Link className="post-title" to={`/redoo/${id}`}>7 Tools for Faster Development in React</Link>
+        <Link className="post-title" to={`/redoos/${id}`}>7 Tools for Faster Development in React</Link>
         <div className="comment-like">
             <span><FontAwesomeIcon icon={faHeart} />12</span>
             <span><FontAwesomeIcon icon={faComment} />8</span>
