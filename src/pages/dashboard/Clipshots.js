@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import styled from 'styled-components'
-import {BiSolidDislike, BiSolidLike,BiSolidCommentDetail} from 'react-icons/bi'
+import {BiSolidDislike, BiSolidLike,BiSolidCommentDetail, BiSolidBookmark} from 'react-icons/bi'
 import {PiShareFatFill} from 'react-icons/pi'
 
 import {VideoContainer} from '../../components/index'
@@ -23,52 +23,14 @@ export default function Clipshots() {
         <VideoContainer videoSrc={videoS}/>
         </div>
         <div className='clipshot-video-sideBar'>
-          <PiShareFatFill className='icon  '/>
-          <BiSolidCommentDetail className='icon  '/>
-          <BiSolidDislike className='icon  '/>
-          <BiSolidLike className='icon  '/>
+          <div className='btn-container'><PiShareFatFill className='icon'/> <span>share</span></div>
+          <div className='btn-container'><BiSolidBookmark className='icon'/><span>save</span></div>
+          <div className='btn-container'><BiSolidCommentDetail className='icon'/><span></span></div>
+        <div className='btn-container'><BiSolidDislike className='icon'/></div>
+          <div className='btn-container'><BiSolidLike className='icon'/><span>2.4k</span></div>  
+
         </div>
       </div>
-
-
-      <div className='clipshot'>
-        <div className='clipshot-video'>
-        <VideoContainer videoSrc={videoS}/>
-        </div>
-        <div className='clipshot-video-sideBar'>
-          <PiShareFatFill className='icon  '/>
-          <BiSolidCommentDetail className='icon  '/>
-          <BiSolidDislike className='icon  '/>
-          <BiSolidLike className='icon  '/>
-        </div>
-      </div>
-
-      <div className='clipshot'>
-        <div className='clipshot-video'>
-        <VideoContainer videoSrc={videoS}/>
-        </div>
-        <div className='clipshot-video-sideBar'>
-          <PiShareFatFill className='icon  '/>
-          <BiSolidCommentDetail className='icon  '/>
-          <BiSolidDislike className='icon  '/>
-          <BiSolidLike className='icon  '/>
-        </div>
-      </div>
-
-      <div className='clipshot'>
-        <div className='clipshot-video'>
-        <VideoContainer videoSrc={videoS}/>
-        </div>
-        <div className='clipshot-video-sideBar'>
-          <PiShareFatFill className='icon  '/>
-          <BiSolidCommentDetail className='icon  '/>
-          <BiSolidDislike className='icon  '/>
-          <BiSolidLike className='icon  '/>
-        </div>
-      </div>
-      
-
-
       </div>
     </Wrapper>
   )
@@ -100,7 +62,6 @@ const Wrapper = styled.div`
 
     .clipshot-video{
       border-radius: 10px;
-      background-color: white;
       height: 90%;
       width: 100%;
 
@@ -119,18 +80,29 @@ const Wrapper = styled.div`
       .icon{
         width: 40px;
         height: 40px;
-        color: rgba(0,0,0, .3);
+        color: rgba(0,0,0, .6);
         padding: 5px;
         border-radius: 10px;
-        margin-bottom: 10px;
+        /* margin-bottom: 10px; */
         cursor: pointer;
         :hover{
-          color:rgba(0,0,0, .6);
+          color:rgba(0,0,0, .8);
 ;
 
         }
       }
     
+      .btn-container{
+        margin: 10px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        span{
+          color: rgba(0,0,0, .3);
+          font-weight: 500;
+        }
+      }
       
     }
   `
+

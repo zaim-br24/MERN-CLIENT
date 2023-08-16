@@ -9,15 +9,16 @@ import { Link } from 'react-router-dom';
 export default function RedooCard({id, src}) {
   return (
      <Wrapper>
+       <div className='publisher'>
+        <div className='publisher-details'>
+              <div className="avatar"></div>
+              <a className="publisher-name"> Zaim br -<span className='published-date'> 4 min ago</span></a>
+        </div>
+        <button className='follow-btn'>follow</button>
+      </div>
+
       <img className='bg-img' src='https://plus.unsplash.com/premium_photo-1675621475729-edf2cf9076af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80' alt='image'/>
        <div className="post-card">
-       <div className='publisher'>
-       <div className='publisher-details'>
-            <div className="avatar"></div>
-            <a className="publisher-name"> Zaim br -<span className='published-date'> 4 min ago</span></a>
-      </div>
-      <button className='follow-btn'>follow</button>
-      </div>
         <Link className="post-title" to={`/redoos/${id}`}>7 Tools for Faster Development in React</Link>
         <div className="comment-like">
             <span><FontAwesomeIcon icon={faHeart} />12</span>
@@ -33,20 +34,21 @@ export default function RedooCard({id, src}) {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 5px 0;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
 
 
 .post-card{
   padding: 10px;
-  background-color: white;
-  min-width: 300px;
-  border-radius: 10px;
+  /* min-width: 300px; */
 }
 .bg-img{
   object-fit: cover;
-  height:80px ;
+  max-height:600px;
   width: 100%;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius: 10px;
 
 }
 
@@ -74,6 +76,7 @@ const Wrapper = styled.div`
   background-color: blueviolet;
   background-image: linear-gradient(to top left, blueviolet, #23a6d5);
   margin-bottom: 4px;
+  padding: 10px;
 }
 
 .comment-like {
@@ -81,6 +84,8 @@ const Wrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   padding: 2px 0;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 .comment-like span {

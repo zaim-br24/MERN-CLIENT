@@ -8,6 +8,7 @@ export default function Redoos() {
   useEffect(()=>{
     displayReommendations()
   },[])
+  
   return (
     <Wrapper className='nasted-box'>
       <RedooCards/>

@@ -16,6 +16,8 @@ body{
   max-width: 100vw;
   /* background-color: #000000 ; */
   background-color: whitesmoke;
+    /* background-color: #f0f0f0; */
+
   
 
 }
@@ -160,6 +162,7 @@ a{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 5px;
 }
 .publisher-details{
   display: flex;

@@ -26,9 +26,8 @@ export default function WatchCard({id}) {
 }
 
 const Wrapper = styled.div`
-  min-width: 250px;
+  /* min-width: 250px; */
   border-radius: 10px;
-  border: 1px solid transparent;
   cursor: pointer;
 
 .image {

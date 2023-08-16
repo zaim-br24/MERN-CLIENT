@@ -19,32 +19,23 @@ export default function ClipShotsCard({id}) {
 }
 
 const Wrapper = styled.div`
-  min-width: 180px;
-  height: 300px;
+  /* min-width: 180px; */
+  height: 400px;
+
 
   border-radius: 10px;
   margin-bottom: 30px;
   cursor: pointer;
   
 .card-image {
-  background-color: rgb(236, 236, 236);
-  width: 100%;
+  background-color: white;
+  border-radius: 10px;
   height: 90%;
-  border-radius: 6px 6px 0 0;
+  width: 100%;
 
 }
 
-/* .category {
-  text-transform: uppercase;
-  font-size: 0.5em;
-  font-weight: 600;
-  color: rgb(63, 121, 230);
-  padding: 10px 7px 0;
 
-  :hover {
-  cursor: pointer;
-}
-} */
 
 
 

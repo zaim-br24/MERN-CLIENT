@@ -18,9 +18,14 @@ export default function RedooCards() {
 }
 
 const Wrapper = styled.div`
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(auto-fit, minmax(285px, 2fr));
     grid-gap: 10px;
-    margin: 25px auto;
+    margin: 25px auto; */
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 10px auto;
+
 
 `

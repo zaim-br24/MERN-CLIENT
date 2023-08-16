@@ -8,14 +8,15 @@ export default function ContentCompo() {
   return (
     <Wrapper className='content-compo'>
         {/* <CardsCompo/> */}
-        <div className='category-title'> <Link to='/redoos'><p>Top Recent Reedos.</p></Link></div>
-        <RedooCards/>
-
+        {/* <div className='category-title'> <Link to='/redoos'><p>Top Recent Reedos.</p></Link></div>
+        <RedooCards/> */}
+        <div className='category-title'> <Link to='/watch'><p>Top Recent Videos.</p></Link></div>
+        <WatchCards/>
+        
         <div className='category-title'> <Link to='/clipShots'><p>Top Recent ClipShots.</p></Link></div>
         <ClipShotsCards/>
 
-        <div className='category-title'> <Link to='/watch'><p>Top Recent Videos.</p></Link></div>
-        <WatchCards/>
+        
 
     </Wrapper>
   )

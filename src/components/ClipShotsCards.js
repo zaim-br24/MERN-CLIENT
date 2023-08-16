@@ -19,10 +19,11 @@ export default function ClipShotsCards() {
 const Wrapper = styled.div`
     padding: 10px;
     border-radius: 10px;
-    background-color:white;
+    /* background-color:white; */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 10px;
+    margin: 0 auto;
     
   `;
     
