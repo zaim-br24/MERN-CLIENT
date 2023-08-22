@@ -22,6 +22,13 @@ import CommentsBox from "./CommentsBox";
 import CommentInput from "./CommentInput";
 import FormRow from "./FormRow";
 import VideoContainer from "./VideoContainer";
+import VideoPlayer from "./VideoPlayer";
+import TextEditor from "./TextEditor";
+import UploadFile from "./UploadFile";
+import TagsInput from "./TagsInput";
+import CategoriesInput from "./CategoriesInput";
+
+
 
 export {
     Navbar,
@@ -46,6 +53,11 @@ export {
     CommentsBox,
     CommentInput,
     FormRow,
-    VideoContainer
+    VideoContainer,
+    VideoPlayer,
+    TextEditor,
+    UploadFile,
+    TagsInput,
+    CategoriesInput
 
 }

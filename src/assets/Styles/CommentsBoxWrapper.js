@@ -1,14 +1,16 @@
 import styled from "styled-components"
 
 const Wrapper = styled.div`
-  width: 400px;
+  width: 450px;
   padding: 10px;
+  height: 800px;
   border-radius: 10px;
   border: 1px solid black;
+  margin-left: 10px;
   
 .comments-container{
   width: 100%;
-  max-width: 400px;
+  /* max-width: 400px; */
   /* overflow-y: scroll; */
 }
 .comments-container::-webkit-scrollbar {

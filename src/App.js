@@ -27,9 +27,9 @@ function App() {
               <Route path="saved-list" element={<SavedList />} />
 
               {/* upload routes */}
-              <Route path="upload/clipshot" element={<CreatePost />} />
-              <Route path="upload/video" element={<CreatePost />} />
-              <Route path="upload/redoo" element={<CreatePost />} />
+              <Route path="submit" element={<CreatePost />} />
+              {/* <Route path="upload/video" element={<CreatePost />} />
+              <Route path="upload/redoo" element={<CreatePost />} /> */}
 
               
               <Route path="watch/:id" element={<WatchSinglePage />} />
