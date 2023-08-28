@@ -5,24 +5,26 @@ import { faComment,faHeart} from '@fortawesome/free-regular-svg-icons';
 import {faShare} from '@fortawesome/free-solid-svg-icons';
 import {bookmarkLight} from '../assets/icons/index'
 import { Link } from 'react-router-dom';
+import ReactHtmlParser from 'html-react-parser';
 
-export default function RedooCard({id, src}) {
+export default function RedooCard({src, title, content, date, postedBy, comments, likes}) {
   return (
      <Wrapper>
        <div className='publisher'>
         <div className='publisher-details'>
               <div className="avatar"></div>
-              <a className="publisher-name"> Zaim br -<span className='published-date'> 4 min ago</span></a>
+              <a className="publisher-name"> {postedBy}-<span className='published-date'>{date}</span></a>
         </div>
         <button className='follow-btn'>follow</button>
       </div>
-
-      <img className='bg-img' src='https://plus.unsplash.com/premium_photo-1675621475729-edf2cf9076af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80' alt='image'/>
+      <h1 className="post-title">{title}</h1>
+      
+      <div className='content'>{ReactHtmlParser(content)}</div> 
+      <img className='bg-img' src={src} />
        <div className="post-card">
-        <Link className="post-title" to={`/redoos/${id}`}>7 Tools for Faster Development in React</Link>
         <div className="comment-like">
-            <span><FontAwesomeIcon icon={faHeart} />12</span>
-            <span><FontAwesomeIcon icon={faComment} />8</span>
+            <span><FontAwesomeIcon icon={faHeart} />{likes}</span>
+            <span><FontAwesomeIcon icon={faComment} />{comments}</span>
             <span  ><Link to="/"><img className='icon' src={bookmarkLight}></img> </Link></span>
         </div>
         </div>
@@ -39,7 +41,6 @@ const Wrapper = styled.div`
   border-radius: 10px;
   padding: 10px;
 
-
 .post-card{
   padding: 10px;
   /* min-width: 300px; */
@@ -49,6 +50,7 @@ const Wrapper = styled.div`
   max-height:600px;
   width: 100%;
   border-radius: 10px;
+  margin-top:10px;
 
 }
 
@@ -111,5 +113,9 @@ const Wrapper = styled.div`
 .comment-like span svg {
   fill: rgb(255, 255, 255);
   margin-right: 2px;
+}
+
+.content{
+ font-size: .8rem;
 }
 `

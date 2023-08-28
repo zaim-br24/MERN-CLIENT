@@ -65,8 +65,20 @@ const Wrapper = styled.div`
         outline: none;
         padding: 10px;
     };
+    .file-upload-input{
+        width: 100%;
+        color: #324759;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+    .preview{
+        max-height: 300px;
+        width: 100%;
+        margin: 10px 0;
+        border-radius: 10px;
+        object-fit: cover; /* Maintain aspect ratio */
 
-
+    }
 `
 
 export default Wrapper

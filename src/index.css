@@ -203,7 +203,7 @@ a{
 
 
 .post-title {
-  font-size: 16px;
+  font-size: 1.3rem;
   line-height: 22px;
   font-weight: 600;
   margin: 10px 0;
@@ -212,13 +212,13 @@ a{
   transition: all .30s ease-in;
 }
 
-.post-title:hover {
+/* .post-title:hover {
   text-decoration: underline blueviolet;
   background: linear-gradient(to right, #ee7752, #e73c7e, #23a6d5, #23d5ab);
      background-clip: text;
     -webkit-background-clip: text;
      color: transparent;
-}
+} */
 /* buttons */
 
 .btn {

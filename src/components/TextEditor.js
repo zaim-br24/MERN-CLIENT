@@ -1,27 +1,13 @@
-import React, { useState, useMemo } from "react";
-import { EditorState, convertToRaw } from "draft-js";
+import React from "react";
 import { Editor } from "react-draft-wysiwyg";
-import draftToHtml from "draftjs-to-html";
-import parse from 'html-react-parser';
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Wrapper from '../assets/Styles/TextEditorWrapper'
 
-const TextEditor = ()=> {
-
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  
-  const handleChange = (data) => {
-    setEditorState(data);
-  };
-  var htmlData = useMemo(
-    () => draftToHtml(convertToRaw(editorState.getCurrentContent())),
-    [editorState]
-  );
-  const parsedContent = parse(htmlData);
-
+const TextEditor = ({handleChange, editorState})=> {
+ 
   const toolbarOptions = {
-    options: ["inline", "fontSize", "image", "emoji"],
+    options: ["inline"],
     inline: {
       options: ["bold", "italic", "underline", "strikethrough"],
     },
@@ -36,6 +22,7 @@ const TextEditor = ()=> {
                 editorClassName="message-editor"
                 toolbarClassName="message-toolbar"
                 toolbar={toolbarOptions}
+                placeholder="Add text"
             />      
             {/* <div className="html-output" >{parsedContent}</div> */}
     </Wrapper>

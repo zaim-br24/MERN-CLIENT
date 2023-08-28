@@ -18,7 +18,13 @@ import {
      UPDATE_USER_SUCCESS,
      UPDATE_USER_ERROR,
      HIDE_RECOMMENDATIONS,
-     DISPLAY_RECOMMENDATIONS
+     DISPLAY_RECOMMENDATIONS,
+     UPLOAD_REDOO_BEGIN,
+     UPLOAD_REDOO_SUCCESS,
+     UPLOAD_REDOO_ERROR,
+     GET_REDOOS_BEGIN,
+     GET_REDOOS_SUCCESS,
+     SET_PAGE
 
     } from './actions'
 import reducer from "./reducer";
@@ -42,7 +48,16 @@ const initialState = {
     isOverlyOpen: false,
     showSidebar: false,
     test : false,
-    showRecommendations:true
+    showRecommendations:true,
+    title:"",
+    image: null,
+    content: "",
+    tags: [],
+    categories:[],
+    redoos: [],
+    numOfRedoosPages:0,
+    totalRedoos: "", 
+    page: 1,
 
 }
 
@@ -53,6 +68,7 @@ const AppProvider = ({children})=>{
     // axios
     const authFetch = axios.create({baseURL: '/api/v1', headers: {
         Authorization: `Bearer ${state.token}`,
+        // 'Content-Type': 'multipart/form-data',
       },})
 
     //   response interceptor (does not work NEED TO BE FIXED)
@@ -73,6 +89,7 @@ const AppProvider = ({children})=>{
         (error) => {
         if (error.response.status === 401) {
             console.log('AUTH ERROR')
+            logoutUser()
         }
         return Promise.reject(error)
         }
@@ -105,7 +122,7 @@ const AppProvider = ({children})=>{
         dispatch({type: REGISTER_USER_BEGIN})
 
         try {
-            const response = await axios.post('/api/v1/auth/register', currentUser)
+            const response = await authFetch.post('/auth/register', currentUser)
             const {user, token , location} = response.data
             dispatch({
                 type: REGISTER_USER_SUCCESS,
@@ -134,7 +151,7 @@ const AppProvider = ({children})=>{
         dispatch({type: LOGIN_USER_BEGIN})
 
         try {
-            const {data} = await axios.post('/api/v1/auth/login', currentUser)
+            const {data} = await authFetch.post('auth/login', currentUser)
             const {user, token , location} = data
             dispatch({
                 type: LOGIN_USER_SUCCESS,
@@ -201,6 +218,51 @@ const AppProvider = ({children})=>{
         dispatch({type: DISPLAY_RECOMMENDATIONS})
 
     }
+
+    // UPLOAD A REDOO
+    const uploadRedoo = async (redoo)=>{
+        dispatch({type: UPLOAD_REDOO_BEGIN})
+        try {
+            await authFetch.post('/redoos/submit', redoo)
+            // const {title, image, content, tags, categories} = data
+
+            dispatch({ type: UPLOAD_REDOO_SUCCESS})
+
+        } catch (error) {
+            dispatch({
+                type: UPLOAD_REDOO_ERROR , 
+                payload:{
+                msg:error.response.data.msg
+            } 
+        })
+
+        }
+        clearAlert()
+
+    }
+    // ------ get redoos
+    const getAllRedoos = async ()=>{
+        dispatch({type: GET_REDOOS_BEGIN})
+        const {page} = state
+        let url = `/redoos?page=${page}`
+
+    
+        try{
+            const {data} =  await authFetch.get(url);
+            const {redoosData, numOfRedoosPages, totalRedoos } = data
+            dispatch({type: GET_REDOOS_SUCCESS,
+                payload:{
+                    redoosData: [...state.redoos, ...redoosData],
+                    numOfRedoosPages,
+                    totalRedoos
+                }
+            
+            })
+
+        }catch(error){
+          console.log(error)
+        }
+    }
     // --------- dropdown menu
     
     const toggleSidebar= ()=>{
@@ -216,6 +278,11 @@ const AppProvider = ({children})=>{
         dispatch({type: CLOSE_DROPDOWN_OVERLY})
     }
     
+    const setPage = (page)=>{
+        dispatch({type: SET_PAGE, payload:{
+            page
+        }})
+    }
 
     return(
         <AppContext.Provider value={{
@@ -230,7 +297,10 @@ const AppProvider = ({children})=>{
             closeDropdownOverly,
             updateUser,
             hideReommendations,
-            displayReommendations
+            displayReommendations,
+            uploadRedoo,
+            getAllRedoos,
+            setPage
             }}>
 
             {children}

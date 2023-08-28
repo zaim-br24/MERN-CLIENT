@@ -16,7 +16,13 @@ import {
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
   HIDE_RECOMMENDATIONS,
-  DISPLAY_RECOMMENDATIONS
+  DISPLAY_RECOMMENDATIONS,
+  UPLOAD_REDOO_BEGIN,
+  UPLOAD_REDOO_SUCCESS,
+  UPLOAD_REDOO_ERROR,
+  GET_REDOOS_BEGIN,
+  GET_REDOOS_SUCCESS,
+  SET_PAGE
 
 } from './actions'
 import { initialState } from './appContext'
@@ -158,4 +164,49 @@ if(action.type === DISPLAY_RECOMMENDATIONS){
   return{...state, showRecommendations: true}
 }
   
+if (action.type === UPLOAD_REDOO_BEGIN) {
+  return { ...state, isLoading: true }
+}
+
+if (action.type === UPLOAD_REDOO_SUCCESS) {
+  return {
+    ...state,
+    isLoading: false,
+    showAlert: true,
+    alertType: 'success',
+    alertText: 'uploaded successfully',
+  }
+}
+if (action.type === UPLOAD_REDOO_ERROR) {
+  return {
+    ...state,
+    isLoading: false,
+    showAlert: true,
+    alertType: 'danger',
+    // alertText: 'Please try again.',
+    alertText: action.payload.msg,
+  }
+}
+if (action.type === GET_REDOOS_BEGIN) {
+  return { ...state, isLoading: true }
+}
+
+if (action.type === GET_REDOOS_SUCCESS) {
+  return {
+    ...state,
+    isLoading: false,
+    // redoos: [...state.redoos,...action.payload.redoosData],
+    redoos: action.payload.redoosData,
+    numOfRedoosPages: action.payload.numOfRedoosPages,
+    totalRedoos: action.payload.totalRedoos
+    
+  }
+}
+if(action.type === SET_PAGE){
+  return{
+    ...state, page: action.payload.page
+  }
+}
+
+
 }

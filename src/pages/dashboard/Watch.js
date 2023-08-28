@@ -8,7 +8,7 @@ export default function Watch() {
 
   useEffect(()=>{
     displayReommendations()
-  },[])
+  })
   return (
     <Wrapper className='nasted-box'>
         <WatchCards/>

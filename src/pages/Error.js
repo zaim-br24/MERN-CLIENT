@@ -11,7 +11,7 @@ export default function Error() {
             <img src={img} alt="" />
             <h3>Ohh!! Page not found.</h3>
             <p>we can't seem to find the page your looking for</p>
-            <Link to="/">Back home</Link>
+            <Link to="/landing">Back home</Link>
        </div>
     </Wrapper>
   )

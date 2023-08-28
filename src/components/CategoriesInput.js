@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Wrapper from '../assets/Styles/CategoriesInputWrapper';
 const categories = ['Technology', 'Science', 'Art', 'Sports', 'Food', 'Travel'];
 
-const CategoriesInput = ()=> {
-    const [selectedCategory, setSelectedCategory] = useState('');
-    const handleCategoryChange = (event) => {
-        setSelectedCategory(event.target.value);
-      };
+const CategoriesInput = ({handleCategoryChange, selectedCategory})=> {
     
       return (
         <Wrapper className="category-input-container">
@@ -22,11 +18,6 @@ const CategoriesInput = ()=> {
               </option>
             ))}
           </select>
-          {selectedCategory && (
-            <div className="selected-category">
-              <p>Selected Category: {selectedCategory}</p>
-            </div>
-          )}
         </Wrapper>
       );
 }
