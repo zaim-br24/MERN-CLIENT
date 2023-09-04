@@ -37,10 +37,9 @@ const handelSubmit = (e)=> {
     return
   }
   const currentUser = {email, name, password}
- 
-
   if(isMember){
     loginUser(currentUser)
+
   }else{
     registerUser(currentUser)
   }

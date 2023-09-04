@@ -22,6 +22,9 @@ import {
      UPLOAD_REDOO_BEGIN,
      UPLOAD_REDOO_SUCCESS,
      UPLOAD_REDOO_ERROR,
+     UPLOAD_VIDEO_BEGIN,
+     UPLOAD_VIDEO_SUCCESS,
+     UPLOAD_VIDEO_ERROR,
      GET_REDOOS_BEGIN,
      GET_REDOOS_SUCCESS,
      SET_PAGE
@@ -59,6 +62,7 @@ const initialState = {
     totalRedoos: "", 
     page: 1,
 
+
 }
 
 const AppContext = React.createContext()
@@ -68,7 +72,8 @@ const AppProvider = ({children})=>{
     // axios
     const authFetch = axios.create({baseURL: '/api/v1', headers: {
         Authorization: `Bearer ${state.token}`,
-        // 'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
+        timeout: 30000,
       },})
 
     //   response interceptor (does not work NEED TO BE FIXED)
@@ -219,7 +224,7 @@ const AppProvider = ({children})=>{
 
     }
 
-    // UPLOAD A REDOO
+    // ----------------- UPLOAD A REDOO
     const uploadRedoo = async (redoo)=>{
         dispatch({type: UPLOAD_REDOO_BEGIN})
         try {
@@ -239,6 +244,30 @@ const AppProvider = ({children})=>{
         }
         clearAlert()
 
+    }
+    // ------------ UPLOAD A VIDEO
+    const uploadVideo = async (videoData)=>{
+        dispatch({type: UPLOAD_VIDEO_BEGIN})
+        try {
+            await authFetch.post('/watchs/submit', videoData,{
+                headers: {
+                  'Content-Type': 'multipart/form-data', 
+                },
+              })
+            // const {title, image, content, tags, categories} = data
+
+            dispatch({ type: UPLOAD_VIDEO_SUCCESS})
+
+        } catch (error) {
+            dispatch({
+                type: UPLOAD_VIDEO_ERROR , 
+                payload:{
+                msg:error.response.data.msg
+            } 
+        })
+
+        }
+        clearAlert()
     }
     // ------ get redoos
     const getAllRedoos = async ()=>{
@@ -263,6 +292,7 @@ const AppProvider = ({children})=>{
           console.log(error)
         }
     }
+
     // --------- dropdown menu
     
     const toggleSidebar= ()=>{
@@ -300,7 +330,8 @@ const AppProvider = ({children})=>{
             displayReommendations,
             uploadRedoo,
             getAllRedoos,
-            setPage
+            setPage,
+            uploadVideo
             }}>
 
             {children}

@@ -2,10 +2,19 @@ import styled from "styled-components";
 
 const Wrapper = styled.label`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);    
     gap: 5px;
+
+    @media (max-width: 992px) {
+        display: grid;
+        grid-template-columns: 1fr;
+
+        .custum-file-upload{
+            grid-column: span 2;
+        }
+    }
     .custum-file-upload{
-    height: 300px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: space-between;
@@ -18,8 +27,9 @@ const Wrapper = styled.label`
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0px 48px 35px -48px rgba(0,0,0,0.1);
-
     }
+    
+    
     .icon {
     display: flex;
     align-items: center;
@@ -45,8 +55,10 @@ const Wrapper = styled.label`
     }
 
     .video-description{
-        height: 300px;
+        height: 200px;
         position: relative;
+        grid-column: span 2;
+        
     }
     textarea{
         height: 100%;

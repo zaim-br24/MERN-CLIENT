@@ -47,8 +47,8 @@ export default function Profile() {
 
           <div className='user-friends'>
                 <p className='user-profile-title'>My Friends</p>
-                <Link><span>Followers </span> <span>2,512</span></Link>
-                <Link><span>Following</span> <span>512</span></Link>
+                <Link><span>Followers </span> <span>{user.followers}</span></Link>
+                <Link><span>Following</span> <span>{user.following}</span></Link>
           </div>
 
           <div className='user-skills'>

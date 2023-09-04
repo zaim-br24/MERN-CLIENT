@@ -27,6 +27,7 @@ import TextEditor from "./TextEditor";
 import UploadFile from "./UploadFile";
 import TagsInput from "./TagsInput";
 import CategoriesInput from "./CategoriesInput";
+import Loader from "./Loader";
 
 
 
@@ -58,6 +59,7 @@ export {
     TextEditor,
     UploadFile,
     TagsInput,
-    CategoriesInput
+    CategoriesInput,
+    Loader
 
 }

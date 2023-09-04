@@ -3,25 +3,34 @@ import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 // import parse from 'html-react-parser';
 
-import {TextEditor, UploadFile, TagsInput, CategoriesInput, Alert} from '../../components/index'
+import {TextEditor, UploadFile, TagsInput, CategoriesInput, Alert, Loader} from '../../components/index'
 import {FormRow} from '../../components/index'
 import {BsCameraVideo} from 'react-icons/bs'
 import {HiScissors} from 'react-icons/hi'
 import {MdOutlineArticle} from 'react-icons/md'
 import Wrapper from '../../assets/Styles/CreatePostWrapper'
 import { useAppContext } from '../../context/appContext';
+import { use } from 'express/lib/router';
 
 export default function CreatePost() {
-  const {uploadRedoo, showAlert, displayAlert} = useAppContext()
+  const {uploadRedoo, showAlert, displayAlert, uploadVideo, isLoading} = useAppContext()
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const [activeBtn, setActiveBtn] = useState('redoo');
+  let [words, setWords]= useState(0)
+  // -------- redoo
   const [image , setImage] = useState({image: ""});
   const [title , setTitle] = useState('');
   const [content, setContent] = useState('');
   const [categories, setCategories] = useState('');
   const [tags, setTags] = useState([]);
   const [currentTag, setCurrentTag] = useState('');
+  // -------- video upload
+  const [videoFile, setVideoFile] = useState();
+  const [description, setDescription] = useState("");
+  const [videoFileName, setVideoFileName]= useState();
+  const [videoFileSize ,setVideoFileSize] = useState()
+
 
   // --- handle submit
   const handleUploadSubmit = async (e)=>{
@@ -32,17 +41,36 @@ export default function CreatePost() {
         displayAlert()
         return
       }
-
+ 
       await uploadRedoo({title, image, content, tags, categories})
-      // clear values
-      setCategories("")
-      setTitle("")
-      setTags([])
-      setImage("")
-      setContent("")
-      setEditorState("")
 
+    }else if(activeBtn === "video"){
+      console.log({title, videoFile, description, tags, categories})
+      if(!title || !videoFile || !description || !tags || !categories){
+        displayAlert()
+        return
+      }
+      const formData = new FormData();
+      formData.append("video", videoFile)
+      formData.append("title", title)
+      formData.append("description", description)
+      formData.append("tags", tags)
+      formData.append("categories", categories)
+      console.log(formData)
+      await uploadVideo(formData)
     }
+     // clear values
+     setCategories("")
+     setTitle("")
+     setTags([])
+     setImage({image: ""})
+     setContent("")
+     setEditorState("")
+     setVideoFile("")
+     setVideoFileName("")
+     setDescription("")
+     setVideoFileSize("")
+
 
     return
   }
@@ -101,7 +129,35 @@ export default function CreatePost() {
     setActiveBtn(v);
     
   }
+  // ----------- video upload
 
+  const handleVideoChange = async (e)=>{
+    const file = e.target.files[0]
+    if(file){
+        const {name, size} = file;
+        setVideoFile(file)
+        setVideoFileName(name)
+        setVideoFileSize(size)
+    }else{
+      setVideoFile(null)
+      setVideoFileName("")
+      setVideoFileSize("")
+
+    }
+   
+  
+
+  }
+  const handleDescription =  (e)=>{
+    console.log(description)
+    console.log(words)
+    if(words < 300){
+      setDescription(e.target.value)
+      setWords(description.length)
+    
+    }
+    
+  }
   // console.log(image, title, content, tags, categories)
   return (
     <Wrapper className='nasted-box'>
@@ -125,11 +181,11 @@ export default function CreatePost() {
             }
             {activeBtn === "redoo" && <TextEditor editorState={editorState} handleChange={handleContentChange}/>}
             {/* <TextEditor/> */}
-            {activeBtn === "video" && <UploadFile/>}  
+            {activeBtn === "video" && <UploadFile handleDescription={handleDescription} handleVideoChange={handleVideoChange} wordsCounter={words} fileSize={videoFileSize} fileName={videoFileName}/>}  
             <TagsInput value={currentTag} handleTagChange={handleTagChange} handleTagKeyPress={handleTagKeyPress} removeTag={removeTag} tags={tags} />
             <CategoriesInput handleCategoryChange={handleCategoryChange} selectedCategory={categories}/>
 
-            <button type='submit' className='btns-submit submit-btn'>Submit</button>
+            <button type='submit' className='btns-submit submit-btn' disabled={isLoading}>{isLoading? "uploading....": "submit"}</button>
         </form>
       </div>
     </Wrapper>

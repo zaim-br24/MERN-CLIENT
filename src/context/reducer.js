@@ -20,6 +20,9 @@ import {
   UPLOAD_REDOO_BEGIN,
   UPLOAD_REDOO_SUCCESS,
   UPLOAD_REDOO_ERROR,
+  UPLOAD_VIDEO_BEGIN,
+  UPLOAD_VIDEO_SUCCESS,
+  UPLOAD_VIDEO_ERROR,
   GET_REDOOS_BEGIN,
   GET_REDOOS_SUCCESS,
   SET_PAGE
@@ -183,12 +186,35 @@ if (action.type === UPLOAD_REDOO_ERROR) {
     isLoading: false,
     showAlert: true,
     alertType: 'danger',
-    // alertText: 'Please try again.',
+    alertText: action.payload.msg,
+  }
+}
+if (action.type === UPLOAD_VIDEO_BEGIN) {
+  return { ...state, isLoading: true }
+}
+
+if (action.type === UPLOAD_VIDEO_SUCCESS) {
+  return {
+    ...state,
+    isLoading: false,
+    showAlert: true,
+    alertType: 'success',
+    alertText: 'video uploaded successfully.',
+  }
+}
+if (action.type === UPLOAD_VIDEO_ERROR) {
+  return {
+    ...state,
+    isLoading: false,
+    showAlert: true,
+    alertType: 'danger',
     alertText: action.payload.msg,
   }
 }
 if (action.type === GET_REDOOS_BEGIN) {
-  return { ...state, isLoading: true }
+  return { ...state, isLoading: true
+    // , redoos:[],numOfRedoosPages:0, totalRedoos:3 
+  }
 }
 
 if (action.type === GET_REDOOS_SUCCESS) {
