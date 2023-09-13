@@ -28,7 +28,7 @@ import UploadFile from "./UploadFile";
 import TagsInput from "./TagsInput";
 import CategoriesInput from "./CategoriesInput";
 import Loader from "./Loader";
-
+import FormRowFile from "./FormRowFile";
 
 
 export {
@@ -60,6 +60,8 @@ export {
     UploadFile,
     TagsInput,
     CategoriesInput,
-    Loader
+    Loader,
+    FormRowFile
+
 
 }

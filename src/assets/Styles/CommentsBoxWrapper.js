@@ -1,33 +1,28 @@
 import styled from "styled-components"
 
 const Wrapper = styled.div`
-  width: 450px;
+  /* width: 450px; */
   padding: 10px;
-  height: 800px;
-  border-radius: 10px;
-  border: 1px solid black;
-  margin-left: 10px;
+  /* height: 500px; */
   
-.comments-container{
+/* .comments-container{
   width: 100%;
-  /* max-width: 400px; */
-  /* overflow-y: scroll; */
 }
 .comments-container::-webkit-scrollbar {
-  width: 0.5em; /* Adjust the width as needed */
+  width: 0.5em;
 }
 
 .comments-container::-webkit-scrollbar-track {
-  background-color: rgba(225, 225, 225, .5); /* Customize the track color */
+  background-color: rgba(225, 225, 225, .5); 
 }
 
 .comments-container::-webkit-scrollbar-thumb {
-  background-color: rgba(225, 225, 225, 1); /* Customize the thumb color */
+  background-color: rgba(225, 225, 225, 1); 
 }
 
 .comments-container::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(225, 225, 225, 0); /* Customize the thumb color on hover */
-}
+  background-color: rgba(225, 225, 225, 0); 
+} */
 
 `
 

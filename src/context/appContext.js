@@ -27,7 +27,9 @@ import {
      UPLOAD_VIDEO_ERROR,
      GET_REDOOS_BEGIN,
      GET_REDOOS_SUCCESS,
-     SET_PAGE
+     GET_VIDEOS_BEGIN,
+     GET_VIDEOS_SUCCESS,
+     SET_PAGE,
 
     } from './actions'
 import reducer from "./reducer";
@@ -61,6 +63,11 @@ const initialState = {
     numOfRedoosPages:0,
     totalRedoos: "", 
     page: 1,
+
+    videos: [],
+    numOfVideosPages:0,
+    totalVideos: "", 
+    videosPage: 1,
 
 
 }
@@ -293,6 +300,31 @@ const AppProvider = ({children})=>{
         }
     }
 
+     // ------ get videos
+     const getAllVideos = async ()=>{
+        dispatch({type: GET_VIDEOS_BEGIN})
+        
+        const {videosPage} = state
+        let url = `/watchs?page=${videosPage}`
+
+    
+        try{
+            const {data} =  await authFetch.get(url);
+            const {videosData, totalVideos, numOfVideosPages} = data
+            dispatch({type: GET_VIDEOS_SUCCESS,
+                payload:{
+                    videosData,
+                    numOfVideosPages,
+                    totalVideos
+                }
+            
+            })
+
+        }catch(error){
+          console.log(error)
+        }
+    }
+
     // --------- dropdown menu
     
     const toggleSidebar= ()=>{
@@ -331,7 +363,8 @@ const AppProvider = ({children})=>{
             uploadRedoo,
             getAllRedoos,
             setPage,
-            uploadVideo
+            uploadVideo,
+            getAllVideos,
             }}>
 
             {children}

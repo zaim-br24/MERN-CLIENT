@@ -2,15 +2,20 @@ import React , {useState} from 'react'
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 // import parse from 'html-react-parser';
+import Wrapper from '../../assets/Styles/CreatePostWrapper'
 
-import {TextEditor, UploadFile, TagsInput, CategoriesInput, Alert, Loader} from '../../components/index'
+
+import {TextEditor, UploadFile, TagsInput, CategoriesInput, Alert} from '../../components/index'
 import {FormRow} from '../../components/index'
 import {BsCameraVideo} from 'react-icons/bs'
 import {HiScissors} from 'react-icons/hi'
 import {MdOutlineArticle} from 'react-icons/md'
-import Wrapper from '../../assets/Styles/CreatePostWrapper'
+import {SlPicture} from 'react-icons/sl'
+
 import { useAppContext } from '../../context/appContext';
-import { use } from 'express/lib/router';
+
+import sizeFormater from '../../utils/sizeFomater';
+
 
 export default function CreatePost() {
   const {uploadRedoo, showAlert, displayAlert, uploadVideo, isLoading} = useAppContext()
@@ -26,11 +31,17 @@ export default function CreatePost() {
   const [tags, setTags] = useState([]);
   const [currentTag, setCurrentTag] = useState('');
   // -------- video upload
-  const [videoFile, setVideoFile] = useState();
+  const [videoFile, setVideoFile] = useState(null);
   const [description, setDescription] = useState("");
   const [videoFileName, setVideoFileName]= useState();
   const [videoFileSize ,setVideoFileSize] = useState()
 
+  const [thumbnailFile, setThumbnailFile] = useState(null);
+  const [thumbnailFileName, setThumbnailFileName]= useState();
+  const [thumbnailFileSize ,setThumbnailFileSize] = useState();
+
+  const uploadedThumnnailSize = sizeFormater(thumbnailFileSize)
+  const thumbnailTextSize =( !thumbnailFileName || !thumbnailFileSize) ? null : `${thumbnailFileName} (${uploadedThumnnailSize}MB)`
 
   // --- handle submit
   const handleUploadSubmit = async (e)=>{
@@ -52,6 +63,7 @@ export default function CreatePost() {
       }
       const formData = new FormData();
       formData.append("video", videoFile)
+      formData.append("thumbnail", thumbnailFile)
       formData.append("title", title)
       formData.append("description", description)
       formData.append("tags", tags)
@@ -65,11 +77,14 @@ export default function CreatePost() {
      setTags([])
      setImage({image: ""})
      setContent("")
-     setEditorState("")
-     setVideoFile("")
+     setEditorState(EditorState.createEmpty())
+     setVideoFile(null)
      setVideoFileName("")
      setDescription("")
      setVideoFileSize("")
+     setThumbnailFile(null)
+     setThumbnailFileSize("")
+     setThumbnailFileName("")
 
 
     return
@@ -131,26 +146,34 @@ export default function CreatePost() {
   }
   // ----------- video upload
 
-  const handleVideoChange = async (e)=>{
+  const handleVideoChange =  (e)=>{
+    const file = e.target.files[0]
+    if (file) {
+      console.log(file)
+
+      const { name, size } = file;
+      setVideoFile(file);
+      setVideoFileName(name);
+      setVideoFileSize(size);
+    }
+
+   
+  }
+  const handleThumbnailChange =  (e)=>{
     const file = e.target.files[0]
     if(file){
-        const {name, size} = file;
-        setVideoFile(file)
-        setVideoFileName(name)
-        setVideoFileSize(size)
-    }else{
-      setVideoFile(null)
-      setVideoFileName("")
-      setVideoFileSize("")
+      console.log(file)
 
-    }
+      const {name , size} = file
+      setThumbnailFile(file)
+      setThumbnailFileSize(size)
+      setThumbnailFileName(name)
+   }
+
+
    
-  
-
   }
   const handleDescription =  (e)=>{
-    console.log(description)
-    console.log(words)
     if(words < 300){
       setDescription(e.target.value)
       setWords(description.length)
@@ -175,13 +198,35 @@ export default function CreatePost() {
             {activeBtn === 'redoo' && 
                <>
                 <input type="file" name="image" className="file-upload-input" accept='.jpeg, .png, .jpg' onChange={(e)=> handleImageChange(e)}/>
-                {image[0]  && <img className='preview' src={`data:image/jpeg;base64,${image}`}  />}
+                {image[0]  && <img className='preview' src={`data:image/jpeg;base64,${image}`} alt='image'  />}
 
                </>
             }
             {activeBtn === "redoo" && <TextEditor editorState={editorState} handleChange={handleContentChange}/>}
             {/* <TextEditor/> */}
-            {activeBtn === "video" && <UploadFile handleDescription={handleDescription} handleVideoChange={handleVideoChange} wordsCounter={words} fileSize={videoFileSize} fileName={videoFileName}/>}  
+            {activeBtn === "video" && <UploadFile 
+            handleDescription={handleDescription} 
+            handleVideoChange={handleVideoChange} 
+            wordsCounter={words} 
+            videoFileSize={videoFileSize} 
+            videoFileName={videoFileName}
+            />
+            } 
+
+            
+            {activeBtn === "video" && <label htmlFor="thumbnail" class="custum-file-upload">
+              <div class="icon">
+              <SlPicture className="icon" />
+              </div>
+              <div class="text">
+              <span>{thumbnailTextSize || "Add thumbnail to your video"}</span>
+                </div>
+                <input type="file" id="thumbnail" onChange={(e)=>{handleThumbnailChange(e)}}></input>
+              </label>
+              }
+
+
+
             <TagsInput value={currentTag} handleTagChange={handleTagChange} handleTagKeyPress={handleTagKeyPress} removeTag={removeTag} tags={tags} />
             <CategoriesInput handleCategoryChange={handleCategoryChange} selectedCategory={categories}/>
 

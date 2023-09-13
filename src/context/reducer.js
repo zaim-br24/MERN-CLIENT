@@ -25,7 +25,9 @@ import {
   UPLOAD_VIDEO_ERROR,
   GET_REDOOS_BEGIN,
   GET_REDOOS_SUCCESS,
-  SET_PAGE
+  SET_PAGE,
+  GET_VIDEOS_BEGIN,
+  GET_VIDEOS_SUCCESS,
 
 } from './actions'
 import { initialState } from './appContext'
@@ -231,6 +233,21 @@ if (action.type === GET_REDOOS_SUCCESS) {
 if(action.type === SET_PAGE){
   return{
     ...state, page: action.payload.page
+  }
+}
+
+if (action.type === GET_VIDEOS_BEGIN) {
+  return { ...state, isLoading: true}
+}
+
+if (action.type === GET_VIDEOS_SUCCESS) {
+  return {
+    ...state,
+    isLoading: false,
+    videos: action.payload.videosData,
+    numOfVideosPages: action.payload.numOfVideosPages,
+    totalVideos: action.payload.totalVideos
+    
   }
 }
 

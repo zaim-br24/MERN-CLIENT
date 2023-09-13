@@ -2,20 +2,22 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 
-export default function WatchCard({id}) {
+export default function WatchCard({id,thumbnailUrl, title, publishedDate, views, avatar, postedBy}) {
   return (
     <Wrapper class="card">
       <Link to={`/watch/${id}`}>
-        <div class="image"></div>
+        <div class="image">
+          <img src={thumbnailUrl} alt={title}/>
+        </div>
         <div class="content">
             <a href="#">
             <span class="title">
-            [BIG ANNOUNCEMENT] My Biggest Week On BACKDOOR!! Here's Why...
+              {title}
             </span>
             </a>
         <div className='publisher'>
-            <div class="avatar"></div>
-            <a class="publisher-name">Zaim br -<span className='published-date'> 4 min ago</span> - 23k views</a>
+            <div class="avatar">{avatar || null}</div>
+            <a class="publisher-name">{postedBy} <span className='published-date'>{publishedDate} - </span> {views} views</a>
         </div>
         </div>
     </Link>
@@ -26,16 +28,21 @@ export default function WatchCard({id}) {
 }
 
 const Wrapper = styled.div`
-  /* min-width: 250px; */
+  /* max-width: 250px; */
   border-radius: 10px;
   cursor: pointer;
 
 .image {
-  object-fit: cover;
   width: 100%;
-  height: 190px;
+  height: 240px;
   background-color: white;
   border-radius: 10px;
+  img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+  }
 }
 .content {
   padding: 5px;

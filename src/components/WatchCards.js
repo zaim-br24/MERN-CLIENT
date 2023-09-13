@@ -1,20 +1,35 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import WatchCard from './WatchCard'
 import styled from 'styled-components'
+import { useAppContext } from '../context/appContext'
+import moment from 'moment/moment';
+import {Loader} from './Loader'
 
 export default function WatchCards() {
+  const { getAllVideos, videos, isLoading, videosPage, setPage, numOfVideosPages, totalVideos} = useAppContext();
+useEffect(()=>{
+    getAllVideos()
+
+}, [videosPage])
+
   return (
     <Wrapper >
-    <WatchCard id="1"/>
-    <WatchCard id="2"/>
-    <WatchCard id="3"/>
-    <WatchCard id="4"/>
-    <WatchCard id="5"/>
-    <WatchCard id="6"/>
-    <WatchCard id="7"/>
-    <WatchCard id="8"/>
-    <WatchCard id="9"/>
-    <WatchCard id="10"/>
+      {isLoading && <loader/>}
+     {
+        videos.map((video, index) => (
+          
+          <WatchCard
+            key={index}
+            id={video.name}
+            postedBy={video.postedBy}
+            publishedDate={moment(video.createdAt).format('MMM Do YY')}
+            title={video.title}
+            views={video.views}
+            avatar={video.avatar}
+            thumbnailUrl={video.video.thumbnailUrl}
+          />
+        ))     
+        }   
     </Wrapper>
   )
 }

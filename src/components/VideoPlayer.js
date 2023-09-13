@@ -27,7 +27,7 @@ function VideoPlayer({ videoSrc }) {
 
   return (
     <Wrapper className="video-player">
-      <video ref={videoRef} controls>
+      <video ref={videoRef} controls autoPlay>
         <source src={videoSrc} type="video/mp4" />
       </video>
       {/* <div className="progress-bar" onClick={handleProgressBarClick}>

@@ -5,19 +5,16 @@ import { RedooCard} from './index'
 import { useAppContext } from '../context/appContext'
 import Loader from './Loader';
 import moment from 'moment/moment';
+import { useLocation } from 'react-router-dom';
 
 export default function RedooCards() {
   const { getAllRedoos, redoos, isLoading, user, page, setPage, numOfRedoosPages, totalRedoos} = useAppContext();
+  let currentPage = 0;
+  const { redooPage} = useLocation()
   useEffect(() => {
-    // if(page <= 3){
-    //   console.log('useEffect: '+ numOfRedoosPages)
-    //    getAllRedoos();
-    // }
     getAllRedoos();
 
-   
-
-  }, [page]); // Only fetch when the page changes
+  }, [redooPage, page]); // Only fetch when the page changes
 
   const fetchMoreData = () => {
     setPage(page + 1)
