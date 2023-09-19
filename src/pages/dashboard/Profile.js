@@ -1,32 +1,72 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { useAppContext } from '../../context/appContext'
 import Wrapper from '../../assets/Styles/ProfileWrapper'
 import { Alert, FormRow } from '../../components/index'
+import {RiImageEditLine} from 'react-icons/ri'
+import userAvatar from '../../assets/images/user.png'
+import {TagsInput} from  '../../components/index'
+
 
 export default function Profile() {
   const { user, showAlert, displayAlert, updateUser, isLoading } = useAppContext()
-  console.log("from profile:",  user)
   const [name, setName] = useState(user?.name)
   const [email, setEmail] = useState(user?.email)
   const [lastName, setLastName] = useState(user?.lastName)
-  const [location, setLocation] = useState(user?.location)
+  const [avatar, setAvatar] = useState(user?.avatar)
+  const [avatarFile, setAvatarFile] = useState(null)
+  const [skills, setSkills] = useState(user?.skills)
+  const [currentSkill , setCurrentSkill] = useState("")
   const [isEditProfile, setEditProfile] = useState(false)
 
-  const toggleEditProfile = ()=>{
-    setEditProfile(!isEditProfile)
-  }
-  const handleSubmit = (e) => {
+  // useEffect(()=>{
+  //   setAvatar(user.avatar)
+  // }, [avatar])
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!name || !email || !lastName || !location) {
-      // test and remove temporary
+    if (!name || !email || !lastName ) {
       displayAlert()
       return
     }
-    updateUser({ name, email, lastName, location })   
-   
-    
+    const formData = new FormData();
+    formData.append("avatar", avatarFile)
+    formData.append("email", email)
+    formData.append("name", name)
+    formData.append("lastName", lastName)
+    formData.append("skills", skills)
+
+  await updateUser(formData)   
+   setAvatar(user.avatar)
+  //  toggleEditProfile()
   }
+  const handleAvatarChange = (e)=>{
+    const file = e.target.files[0]
+    setAvatarFile(file)
+    setAvatar(user.avatar)
+  }
+  const toggleEditProfile =  ()=>{
+    setEditProfile(!isEditProfile)
+  }
+  // tags
+  const handleTagChange = (e) => {
+    setCurrentSkill(e.target.value);
+  };
+ 
+  const handleTagKeyPress = (event) => {
+    if (event.key === 'Enter' || event.key === ',') {
+      event.preventDefault();
+
+      const skillValue = currentSkill.trim();
+      if (skillValue !== '') {
+        setSkills([...skills, `#${skillValue}`]);
+        setCurrentSkill('');
+      }
+    }
+  };
+  const removeTag = (skillToRemove) => {
+    const updatedSkill = skills.filter(skill => skill !== skillToRemove);
+    setSkills(updatedSkill);
+  };
   return (
     <Wrapper className='nasted-box'>
       <div className='profile-container'>
@@ -35,12 +75,15 @@ export default function Profile() {
 
             <div className='user-profile-container'>
 
-              <div className='user-image'></div>
+              <div className='user-image' >
+                <img src={avatar} alt='avatar' />
+              </div>
 
               <div className='user-info'>
-                <p className='user-name'>{name}</p>
+                <p className='user-name'>{name} {lastName}</p>
                 <p className='personal-account'>(Your personal account)</p>
               </div>
+
             </div>
             <button type='click' className='profile-btns edit-btn' onClick={toggleEditProfile}>{!isEditProfile?"Edit Profile": "Disorder Edit"} </button>
           </div>
@@ -54,10 +97,12 @@ export default function Profile() {
           <div className='user-skills'>
                 <p className='user-profile-title'>My Skills</p>
                 <div className='skills'>
-                  <div><span></span> compute science</div>
-                  <div><span></span> frontend</div>
-                  <div><span></span> football</div>
-                  <div><span></span> game dev</div>
+                  {skills.map((skill, index)=>{
+                    return(
+                      <div key={index}><span>{skill}</span></div>
+                    )
+                  })}
+
                 </div>
           </div>
           </div>
@@ -83,11 +128,11 @@ export default function Profile() {
       <div className='glass-background update-profile'>
       <form className='form' onSubmit={handleSubmit}>
       <h3> Edite Profile </h3>
-      {showAlert && <Alert />}
-
+          {showAlert && <Alert />}
       {/* name */}
       <div className='form-center'>
         <FormRow
+          labelText='first name'
           type='text'
           name='name'
           value={name}
@@ -101,18 +146,29 @@ export default function Profile() {
           handleChange={(e) => setLastName(e.target.value)}
         />
         <FormRow
+          labelText='email'
           type='email'
           name='email'
           value={email}
           handleChange={(e) => setEmail(e.target.value)}
         />
-
-        <FormRow
-          type='text'
-          name='location'
-          value={location}
-          handleChange={(e) => setLocation(e.target.value)}
+         <FormRow
+          labelText='Profile'
+          type='file'
+          name='avatar'
+          handleChange={(e) => handleAvatarChange(e)}
+          accept="image/*"
         />
+        <TagsInput 
+          className="form-input"
+          value={currentSkill} 
+          handleTagChange={handleTagChange} 
+          handleTagKeyPress={handleTagKeyPress} 
+          removeTag={removeTag} 
+          tags={skills} 
+          placeholder="Enter skills"
+        />
+
         <button className='btn btn-block' type='submit' disabled={isLoading}>
           {isLoading ? 'Please Wait...' : 'save changes'}
         </button>

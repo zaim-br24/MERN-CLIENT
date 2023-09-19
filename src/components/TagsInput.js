@@ -1,7 +1,7 @@
 import React from 'react';
 import Wrapper from '../assets/Styles/TagsInputWrapper'
 
-const TagsInput = ({value, handleTagChange, handleTagKeyPress, removeTag, tags})=> {
+const TagsInput = ({value, handleTagChange, handleTagKeyPress, removeTag, tags, placeholder, className})=> {
 
   return (
     <Wrapper className="tag-input-container">
@@ -17,8 +17,8 @@ const TagsInput = ({value, handleTagChange, handleTagKeyPress, removeTag, tags})
       </div>
         <input
           type="text"
-          className="tag-input"
-          placeholder="Enter tags"
+          className={className || "tag-input"}
+          placeholder={placeholder || "Enter tags"}
           value={value}
           onChange={handleTagChange}
           onKeyPress={handleTagKeyPress}

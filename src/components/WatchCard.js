@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 
-export default function WatchCard({id,thumbnailUrl, title, publishedDate, views, avatar, postedBy}) {
+export default function WatchCard({videoId,thumbnailUrl, title, publishedDate, views, avatar, postedBy}) {
   return (
     <Wrapper class="card">
-      <Link to={`/watch/${id}`}>
+      <Link to={`/watchs/${videoId}`}>
         <div class="image">
           <img src={thumbnailUrl} alt={title}/>
         </div>
@@ -16,8 +16,10 @@ export default function WatchCard({id,thumbnailUrl, title, publishedDate, views,
             </span>
             </a>
         <div className='publisher'>
-            <div class="avatar">{avatar || null}</div>
-            <a class="publisher-name">{postedBy} <span className='published-date'>{publishedDate} - </span> {views} views</a>
+            <div class="avatar">
+              {avatar && <img src={avatar} alt='avatar' />}
+            </div>
+            <a class="publisher-name">{postedBy} <span className='published-date'>{publishedDate} - </span> <span className='views'>{views} views</span> </a>
         </div>
         </div>
     </Link>
@@ -60,17 +62,28 @@ const Wrapper = styled.div`
     position: relative;
 
     .avatar {
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
     border-radius: 50%;
     background-color: blueviolet;
     background-image: linear-gradient(to top left, blueviolet, #23a6d5);
+    img{
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 50%;
+    }
     }
     .publisher-name{
-        font-size: .7rem;
-        font-weight: 600;
+        font-size: .8rem;
+        font-weight: 700;
         margin-left: 10px;
-        color: rgb(88, 87, 87);
+        color: rgb(88, 87, 70);
+        text-transform: capitalize;
+    }
+    .views{
+      font-size: .7rem;
     }
     .published-date{
         font-size:.7rem;

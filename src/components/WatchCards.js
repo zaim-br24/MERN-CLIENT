@@ -20,7 +20,7 @@ useEffect(()=>{
           
           <WatchCard
             key={index}
-            id={video.name}
+            videoId={video.name}
             postedBy={video.postedBy}
             publishedDate={moment(video.createdAt).format('MMM Do YY')}
             title={video.title}

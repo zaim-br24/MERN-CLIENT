@@ -28,6 +28,8 @@ import {
   SET_PAGE,
   GET_VIDEOS_BEGIN,
   GET_VIDEOS_SUCCESS,
+  GET_VIDEO_BEGIN,
+  GET_VIDEO_SUCCESS,
 
 } from './actions'
 import { initialState } from './appContext'
@@ -251,5 +253,18 @@ if (action.type === GET_VIDEOS_SUCCESS) {
   }
 }
 
+if (action.type === GET_VIDEO_BEGIN) {
+  return { ...state, isLoading: true}
+}
+
+if (action.type === GET_VIDEO_SUCCESS) {
+  return {
+    ...state,
+    isLoading: false,
+    video: action.payload.video,
+    
+    
+  }
+}
 
 }

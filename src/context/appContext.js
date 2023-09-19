@@ -1,5 +1,6 @@
 
 import React, { useReducer, useContext} from "react";
+
 import {
      CLEAR_ALERT,
      DISPLAY_ALERT, 
@@ -29,6 +30,8 @@ import {
      GET_REDOOS_SUCCESS,
      GET_VIDEOS_BEGIN,
      GET_VIDEOS_SUCCESS,
+     GET_VIDEO_BEGIN,
+     GET_VIDEO_SUCCESS,
      SET_PAGE,
 
     } from './actions'
@@ -63,11 +66,11 @@ const initialState = {
     numOfRedoosPages:0,
     totalRedoos: "", 
     page: 1,
-
     videos: [],
     numOfVideosPages:0,
     totalVideos: "", 
     videosPage: 1,
+    video: [],
 
 
 }
@@ -194,9 +197,13 @@ const AppProvider = ({children})=>{
         dispatch({ type: UPDATE_USER_BEGIN })
   
         try {
-          const { data } = await authFetch.patch('/auth/updateUser', currentUser)
+          const { data } = await authFetch.patch('/auth/updateUser', currentUser, {
+            headers: {
+              'Content-Type': 'multipart/form-data', 
+            },
+          })
           // no token
-          const { user, location, token } = data
+          const { user, token } = data
       
           dispatch({
             type: UPDATE_USER_SUCCESS,
@@ -303,11 +310,8 @@ const AppProvider = ({children})=>{
      // ------ get videos
      const getAllVideos = async ()=>{
         dispatch({type: GET_VIDEOS_BEGIN})
-        
         const {videosPage} = state
         let url = `/watchs?page=${videosPage}`
-
-    
         try{
             const {data} =  await authFetch.get(url);
             const {videosData, totalVideos, numOfVideosPages} = data
@@ -324,7 +328,23 @@ const AppProvider = ({children})=>{
           console.log(error)
         }
     }
+   // ------ get videos
+   const getOneVideo = async (videoId)=>{
+    dispatch({type: GET_VIDEO_BEGIN})
 
+    let url = `/watchs/${videoId}`
+    try{
+        const {data} =  await authFetch.get(url);
+        const {video} = data
+        dispatch({type: GET_VIDEO_SUCCESS,
+            payload:{video}
+        })
+        // console.log(video.videoUrl[1])
+        return video
+    }catch(error){
+      console.log(error)
+    }
+}
     // --------- dropdown menu
     
     const toggleSidebar= ()=>{
@@ -365,6 +385,7 @@ const AppProvider = ({children})=>{
             setPage,
             uploadVideo,
             getAllVideos,
+            getOneVideo
             }}>
 
             {children}

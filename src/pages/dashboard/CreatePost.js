@@ -3,6 +3,7 @@ import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 // import parse from 'html-react-parser';
 import Wrapper from '../../assets/Styles/CreatePostWrapper'
+import fileToBase64 from '../../utils/fileToBase64';
 
 
 import {TextEditor, UploadFile, TagsInput, CategoriesInput, Alert} from '../../components/index'
@@ -149,8 +150,6 @@ export default function CreatePost() {
   const handleVideoChange =  (e)=>{
     const file = e.target.files[0]
     if (file) {
-      console.log(file)
-
       const { name, size } = file;
       setVideoFile(file);
       setVideoFileName(name);
@@ -162,8 +161,6 @@ export default function CreatePost() {
   const handleThumbnailChange =  (e)=>{
     const file = e.target.files[0]
     if(file){
-      console.log(file)
-
       const {name , size} = file
       setThumbnailFile(file)
       setThumbnailFileSize(size)
@@ -221,7 +218,7 @@ export default function CreatePost() {
               <div class="text">
               <span>{thumbnailTextSize || "Add thumbnail to your video"}</span>
                 </div>
-                <input type="file" id="thumbnail" onChange={(e)=>{handleThumbnailChange(e)}}></input>
+                <input type="file" id="thumbnail" accept="image/*" onChange={(e)=>{handleThumbnailChange(e)}}></input>
               </label>
               }
 
@@ -237,18 +234,18 @@ export default function CreatePost() {
   )
 }
 
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
+// function fileToBase64(file) {
+//   return new Promise((resolve, reject) => {
+//     const reader = new FileReader();
+//     reader.readAsDataURL(file);
 
-    reader.onload = () => {
-      const base64String = reader.result.split(',')[1]; // Get the Base64 part of the data URL
-      resolve(base64String);
-    };
+//     reader.onload = () => {
+//       const base64String = reader.result.split(',')[1]; // Get the Base64 part of the data URL
+//       resolve(base64String);
+//     };
 
-    reader.onerror = (error) => {
-      reject(error);
-    };
-  });
-}
+//     reader.onerror = (error) => {
+//       reject(error);
+//     };
+//   });
+// }

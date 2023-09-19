@@ -95,9 +95,54 @@ const Wrapper = styled.div`
   .user-image{
     height: 5rem;
     width:5rem;
-    background-color: gray;
+    /* background-color: rgba(225, 225, 225, 0.5); */
     border-radius: .5rem;
     margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    outline: 3px solid rgba(35, 165, 213, 0.7);
+
+
+    img{
+      border-radius: .5rem;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    label{
+      position: absolute;
+      top: 0;
+      left:0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      #avatar{
+      display: none;
+     }
+     .icon{
+      display: none;
+      color: rgba(0, 0, 0, 0.5);
+      transition: all .3s ease-in;
+    }
+    :hover{
+        .icon{
+          display: block;
+        }
+        background-color: rgba(225, 225, 225, 0.5);
+
+      } 
+    }
+    
+   
+
   }
   .user-info{
     width: 70%;

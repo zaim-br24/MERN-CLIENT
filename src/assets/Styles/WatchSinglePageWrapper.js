@@ -11,13 +11,18 @@ const Wrapper = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;   
    .item1 {
-
     background-color: white; 
     grid-row-start: 1;
     grid-column-start: 1;
     grid-row-end: 2;
     grid-column-end: 3;
 
+  }
+  .item1-loading {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-end: 2;
+    grid-column-end: 3;
   }
   .item2 {
     border-radius: 10px;

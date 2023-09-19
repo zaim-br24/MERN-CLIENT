@@ -32,7 +32,7 @@ function App() {
               <Route path="upload/redoo" element={<CreatePost />} /> */}
 
               
-              <Route path="watch/:id" element={<WatchSinglePage />} />
+              <Route path="watchs/:videoId" element={<WatchSinglePage />} />
               <Route path="clipshot/:id" element={<ClipshotSinglePage />} />
               <Route path="redoos/:id" element={<RedoosSinglePage />} />
 
